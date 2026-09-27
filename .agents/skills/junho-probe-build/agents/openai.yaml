@@ -1,0 +1,4 @@
+interface:
+  display_name: "Junho Probe Build"
+  short_description: "한 번에 한 작업을 구현하고 실행 증거까지 기록"
+  default_prompt: "Use $junho-probe-build to execute one bounded implementation task and record verified evidence."

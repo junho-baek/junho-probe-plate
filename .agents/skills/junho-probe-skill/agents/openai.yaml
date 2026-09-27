@@ -1,0 +1,4 @@
+interface:
+  display_name: "Junho Probe Router"
+  short_description: "현재 Phase와 증거 게이트를 확인해 실행 스킬로 라우팅"
+  default_prompt: "Use $junho-probe-skill to initialize or inspect the shared evidence state and route this challenge to the correct Junho Probe skill."

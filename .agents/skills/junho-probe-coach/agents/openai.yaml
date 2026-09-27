@@ -1,0 +1,4 @@
+interface:
+  display_name: "Junho Probe Coach"
+  short_description: "문제 해석부터 얇은 솔루션 설계까지 프롬프트 생성"
+  default_prompt: "Use $junho-probe-coach to analyze this raw challenge and generate one prompt for the current Phase 0-3 gate."
