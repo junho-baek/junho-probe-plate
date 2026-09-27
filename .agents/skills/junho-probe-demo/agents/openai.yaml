@@ -1,0 +1,4 @@
+interface:
+  display_name: "Junho Probe Demo"
+  short_description: "행사가 정한 발표 길이에 맞춘 재현 가능한 데모와 사후 Q&A 재료 구성"
+  default_prompt: "Use $junho-probe-demo to build a reproducible demo at this event's own presentation length (recorded in .junho-probe/STATUS.md) and the grounded material a post-hoc Q&A answer needs."
