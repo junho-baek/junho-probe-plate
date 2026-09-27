@@ -1,0 +1,4 @@
+interface:
+  display_name: "Junho Probe Quiz"
+  short_description: "프로젝트를 읽어 인지 퀴즈 5-10문항 출제·판정하고 인지 갭 보고"
+  default_prompt: "Use $junho-probe-quiz to read this project and its intent events, then set 5-10 closed-book cognition questions. Anchor every question to a verified file:line and, where relevant, an intent event ID; include at least two cross-evidence questions without revealing the answers."
