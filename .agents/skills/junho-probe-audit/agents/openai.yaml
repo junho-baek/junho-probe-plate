@@ -1,0 +1,4 @@
+interface:
+  display_name: "Junho Probe Audit"
+  short_description: "행사 기준으로 기술·의도·인지 3축을 역채점하고 복구 프롬프트 생성"
+  default_prompt: "Use $junho-probe-audit to score this work on technique, intent and cognition against whichever rubric .junho-probe/RUBRIC.md names for this event, taking cognition only from a $junho-probe-quiz verdict, and generate one recovery prompt."
