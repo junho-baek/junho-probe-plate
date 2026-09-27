@@ -29,6 +29,7 @@ skills=(
   junho-probe-audit
   junho-probe-quiz
   junho-probe-demo
+  junho-query-wiki
 )
 
 mkdir -p "${target_skills}"
