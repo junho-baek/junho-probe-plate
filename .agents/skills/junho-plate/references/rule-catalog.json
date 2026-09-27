@@ -1,0 +1,1075 @@
+[
+  {
+    "id": "ARCH-001",
+    "statement": "domain framework independence",
+    "scope": "Domain entities, value objects, and policies.",
+    "pass": "PASS: domain imports only language or domain-local modules.",
+    "warn": "WARN: an adapter boundary needs a documented translation.",
+    "fail": "FAIL: domain code imports React, React Router, Supabase, or Drizzle.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A pure type declared in a framework-agnostic shared package is acceptable after dependency review."
+    ],
+    "detection": "Search domain imports for framework and infrastructure module names.",
+    "remediation": "Move framework interaction to an adapter and pass a domain value or port.",
+    "validation": "Inspect domain import graphs and confirm no forbidden package path reaches a domain module.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/features/* is separated from the external-adapter categories app/core/lib/*.server.ts and app/core/db/*.server.ts, corroborating a policy-to-adapter boundary without asserting import conformance."
+    ],
+    "official_docs": [
+      "https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "ARCH-002",
+    "statement": "dependency direction",
+    "scope": "Route, application, domain, port, infrastructure, screen, and component dependencies.",
+    "pass": "PASS: routes depend on application; application depends on domain and ports; infrastructure implements ports.",
+    "warn": "WARN: a transitional adapter is documented with a removal path.",
+    "fail": "FAIL: a lower layer imports a route, screen, component, or infrastructure implementation.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A composition root may wire an infrastructure implementation to an application port."
+    ],
+    "detection": "Trace imports from domain/application modules toward route and infrastructure paths.",
+    "remediation": "Invert the dependency through a port or move composition to the route/server entry point.",
+    "validation": "Inspect import edges and confirm routes\u2192application\u2192domain/ports while infrastructure only implements ports.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/routes.ts, app/features/*/screens, app/features/*/components, app/core/lib/*.server.ts, and app/core/db/*.server.ts are distinct categories."
+    ],
+    "official_docs": [
+      "https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "ARCH-003",
+    "statement": "feature public boundaries",
+    "scope": "Cross-feature imports under app/features.",
+    "pass": "PASS: another feature imports only the target feature's explicit public entry point.",
+    "warn": "WARN: a temporary cross-feature import has an owner and removal issue.",
+    "fail": "FAIL: one feature reaches another feature's internal route, component, or data module.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Shared cross-cutting code may live in an intentionally shared core module."
+    ],
+    "detection": "Search feature-to-feature relative imports that bypass a feature public index.",
+    "remediation": "Export a narrow API from the target feature or relocate truly shared code.",
+    "validation": "Inspect cross-feature import paths and confirm each ends at an explicit public API.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/features/{auth,blog,contact,cron,home,legal,payments,settings,users} are separate top-level ownership categories; the approved contract makes each feature's explicit entry point its cross-feature boundary."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "ARCH-004",
+    "statement": "proportional layering",
+    "scope": "Feature structure and clean-architecture seams.",
+    "pass": "PASS: layers exist only where they clarify a real policy, boundary, or change risk.",
+    "warn": "WARN: a simple feature may stay flatter with its rationale visible in code.",
+    "fail": "FAIL: ceremony obscures a needed boundary or a shortcut crosses a protected boundary.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A small read-only feature may use a direct route-to-repository adapter when no domain policy exists."
+    ],
+    "detection": "Inspect whether each layer owns a distinct policy, port, or adaptation responsibility.",
+    "remediation": "Collapse empty abstractions or introduce the smallest boundary that protects policy.",
+    "validation": "Inspect representative feature flows and confirm layers correspond to observable responsibilities, not class counts.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): screen-only features coexist with features that also have api, components, layouts, lib, or schema categories; the observed category sets vary and do not establish a universal layout."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "ARCH-005",
+    "statement": "application ports and use cases",
+    "scope": "Business operations that coordinate domain policy and external effects.",
+    "pass": "PASS: application use cases express intent and depend on named ports for external effects.",
+    "warn": "WARN: a trivial operation may remain inline until it coordinates policy or multiple effects.",
+    "fail": "FAIL: domain policy is coupled directly to a Supabase client, route request, or UI object.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Read-only projection code may map a repository result without a separate use-case class."
+    ],
+    "detection": "Search application/domain modules for direct framework client or request imports.",
+    "remediation": "Introduce a narrow port and call it from an application operation.",
+    "validation": "Inspect multi-step operations and confirm external effects are invoked through named application-facing ports.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/core/lib/*.server.ts and app/core/db/*.server.ts isolate external adapters, while features use varied category sets rather than a universal class, repository, or use-case template."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "ARCH-006",
+    "statement": "infrastructure responsibility purity",
+    "scope": "Server modules that import filesystem, database, network, or vendor adapters.",
+    "pass": "PASS: infrastructure modules own external I/O, serialization, vendor mapping, and infrastructure error translation only.",
+    "warn": "WARN: a storage-specific compatibility normalization remains local and is explicitly not product or domain policy.",
+    "fail": "FAIL: an infrastructure module also owns reusable domain decisions, application orchestration, or presentation tokens and defaults.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Serialization helpers, vendor DTO mapping, storage-specific compatibility normalization, and infrastructure error mapping may remain beside the adapter.",
+      "A trivial read-only projection may map a row directly when it contains no reusable policy or presentation styling."
+    ],
+    "detection": "Search modules importing node:fs, Supabase, Drizzle, database, network, or vendor clients for entity factories, ordering or state transitions, read-modify-write orchestration, fallback product policy, or CSS and Tailwind tokens.",
+    "remediation": "Keep I/O and vendor mapping in infrastructure; move reusable factories and policy to a pure model or domain module, read-modify-write coordination to an application operation, and visual token mapping to presentation. Use functions unless a class or port isolates a real change reason.",
+    "validation": "Inspect infrastructure module imports and exported behavior and confirm external I/O, serialization, and vendor error mapping remain without reusable domain policy, application orchestration, or presentation tokens.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): feature screen and component paths are distinct from feature api and query paths plus app/core/lib/*.server.ts and app/core/db/*.server.ts adapter categories; the approved contract defines responsibility purity without claiming every observed file conforms."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "ARCH-007",
+    "statement": "runtime surface ownership",
+    "scope": "Admin, customer, API, worker, and shared runtime entrypoints that participate in one product flow.",
+    "pass": "PASS: each runtime surface has an explicit entrypoint and owner, dependencies point toward intentionally shared contracts, and the surfaces are independently traceable and verifiable.",
+    "warn": "WARN: a small deployment shares one process while retaining explicit surface modules, dependency direction, and separate verification seams.",
+    "fail": "FAIL: admin, customer, API, or worker responsibilities are mixed in one screen or module so a change cannot be traced or verified by surface.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A prototype may use one deployable and one process; this rule requires responsibility boundaries, not microservices or separate deployments."
+    ],
+    "detection": "Trace runtime entrypoints and cross-surface imports for mixed route, presentation, protocol, and privileged server responsibilities.",
+    "remediation": "Create the fewest explicit entry modules and shared contracts that make ownership and dependency direction visible without forcing a new deployment topology.",
+    "validation": "Inspect runtime entrypoint modules and the dependency graph and confirm admin, customer, API, and worker responsibilities have explicit owners without forbidden upward edges.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Junho Plate review-derived contract: user-facing screens, admin screens, route/API adapters, and shared rendering or domain code need distinct ownership even when they ship in one process."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "ARCH-008",
+    "statement": "scoped starter residue cleanup",
+    "scope": "Starter routes, features, configuration, dependencies, and generated surface area reachable from the requested slice.",
+    "pass": "PASS: reachable starter residue is either used by a named consumer or removed inside the authorized scope with verification.",
+    "warn": "WARN: uncertain or out-of-scope starter residue is retained with its uncertainty, likely owner, and the evidence needed before removal.",
+    "fail": "FAIL: confirmed unused starter routes, features, or dependencies remain in the delivered slice and falsely imply supported behavior.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Never delete repository-wide code merely because it looks unused; dynamic imports, deployment tooling, and external routes require evidence and authority."
+    ],
+    "detection": "Search route registries, import reachability, package scripts, runtime configuration, and build output for starter artifacts without a consumer.",
+    "remediation": "Remove only confirmed dead residue inside the authorized slice, then re-run the same route, dependency, build, and behavior checks.",
+    "validation": "Search route registries, dependency graphs, and build artifacts and confirm removed starter code has no runtime consumer while every retained residue has a named owner or uncertainty.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Junho Plate review-derived contract: unused template features should not be presented as implemented capability, but cleanup must stay within explicit scope and evidence."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "RR7-001",
+    "statement": "loader-owned server data",
+    "scope": "React Router route reads and rendered server data.",
+    "pass": "PASS: a loader supplies route server data and the route consumes generated loader data.",
+    "warn": "WARN: useEffect is limited to synchronizing an external client-side system.",
+    "fail": "FAIL: a route fetches its own server data in an effect or copies loader data into local state.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A client-only browser API may be synchronized in an effect after hydration."
+    ],
+    "detection": "Search route and screen files for fetch effects and state initialized from loader data.",
+    "remediation": "Move the read to a loader and retain useState only for ephemeral UI state.",
+    "validation": "Inspect route reads and confirm server data originates in a loader rather than a mount-time effect.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://reactrouter.com/start/framework/route-module"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "RR7-002",
+    "statement": "action/Form/fetcher mutations",
+    "scope": "React Router mutations initiated by route UI.",
+    "pass": "PASS: mutations use an action with Form or fetcher semantics.",
+    "warn": "WARN: imperative submission is documented when a native form cannot express the interaction.",
+    "fail": "FAIL: route mutations bypass action/Form/fetcher with ad-hoc client fetch state.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A browser-only interaction with no server mutation may use local state."
+    ],
+    "detection": "Search route UI for mutation fetch calls not connected to an action or fetcher.",
+    "remediation": "Define an action and submit through Form or useFetcher.",
+    "validation": "Inspect each server mutation and confirm it is represented by an action, Form, or fetcher.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://reactrouter.com/explanation/form-vs-fetcher"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "RR7-003",
+    "statement": "generated route types",
+    "scope": "Route module loader, action, and component signatures.",
+    "pass": "PASS: route modules use generated Route types for route arguments and data.",
+    "warn": "WARN: a generated type gap is recorded next to a temporary explicit adapter type.",
+    "fail": "FAIL: a route hand-rolls incompatible params or loader/action argument shapes.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A framework-independent application input type may be defined separately from Route types."
+    ],
+    "detection": "Search route modules for loader/action signatures lacking generated Route type references.",
+    "remediation": "Regenerate route types and use the generated Route namespace at the adapter boundary.",
+    "validation": "Inspect route module signatures and confirm loader/action/component contracts use generated route types where available.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://reactrouter.com/7.5.1/how-to/route-module-type-safety"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "RR7-004",
+    "statement": "server auth and authorization",
+    "scope": "Loaders, actions, and server handlers that access protected data or effects.",
+    "pass": "PASS: the server authenticates the caller and checks authorization before protected work.",
+    "warn": "WARN: an intentionally public route states its public data and effect boundary.",
+    "fail": "FAIL: a protected loader/action trusts client role state or omits server authorization.",
+    "hard_blocker": true,
+    "exceptions": [
+      "Public content may omit an identity check only when its repository operation is public by design."
+    ],
+    "detection": "Search protected route handlers for session lookup and authorization policy before repository calls.",
+    "remediation": "Authenticate on the server and enforce resource-level authorization before the effect.",
+    "validation": "Inspect protected loaders/actions and confirm server identity plus authorization precede protected queries or mutations.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://reactrouter.com/start/framework/route-module",
+      "https://supabase.com/docs/guides/auth/server-side/creating-a-client"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "RR7-005",
+    "statement": "status/ErrorBoundary mapping",
+    "scope": "Route responses, expected errors, and unexpected failures.",
+    "pass": "PASS: expected statuses map to route UI and unexpected errors reach an ErrorBoundary.",
+    "warn": "WARN: a shared boundary may render a documented generic recovery UI.",
+    "fail": "FAIL: a route renders an unclassified exception as normal data or hides its status.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A normal empty result is rendered as an explicit empty state, not an error boundary."
+    ],
+    "detection": "Inspect route throws/returns and ErrorBoundary handling for status-to-UI mapping.",
+    "remediation": "Return or throw a meaningful status and render it in the route error boundary.",
+    "validation": "Trace representative empty, domain, and unexpected paths and confirm each reaches an explicit route state.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://reactrouter.com/how-to/error-boundary",
+      "https://reactrouter.com/how-to/status"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "RR7-006",
+    "statement": "no duplicated router state",
+    "scope": "URL params, search params, navigation, fetcher, and loader state.",
+    "pass": "PASS: router-owned state remains in React Router APIs; useState holds only ephemeral UI state.",
+    "warn": "WARN: a local draft mirrors a URL value only while an explicit edit interaction is active.",
+    "fail": "FAIL: route code stores URL/search/navigation/fetcher or loader state as an unsynchronized duplicate.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A transient input draft may differ from the committed URL until submission."
+    ],
+    "detection": "Search for useState initialized from search params, navigation, fetcher, or loader values.",
+    "remediation": "Read router state directly and keep local state only for temporary UI interaction.",
+    "validation": "Inspect state ownership and confirm URL, navigation, fetcher, and loader data are not copied into persistent local state.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://reactrouter.com/7.5.1/start/framework/pending-ui",
+      "https://react.dev/learn/you-might-not-need-an-effect"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "SUPA-001",
+    "statement": "browser/server/admin clients",
+    "scope": "Supabase client creation and credential use.",
+    "pass": "PASS: browser, server session, and privileged admin clients are distinct and scoped.",
+    "warn": "WARN: an admin client is isolated in a server-only module with a documented purpose.",
+    "fail": "FAIL: a browser bundle can import a service-role client or client scopes are conflated.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A server-only job may use an admin client after its execution boundary is verified."
+    ],
+    "detection": "Search client factories and imports for service-role keys or server modules reachable from browser code.",
+    "remediation": "Create separate browser, server, and admin factories and isolate privileged imports.",
+    "validation": "Inspect client factory paths and confirm service-role credentials occur only in server-only admin construction.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/auth/server-side/creating-a-client",
+      "https://supabase.com/docs/guides/database/secure-data"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "SUPA-002",
+    "statement": "repository error mapping",
+    "scope": "Supabase repository adapters and application-facing errors.",
+    "pass": "PASS: repositories map provider failures to meaningful domain or application outcomes.",
+    "warn": "WARN: an unmapped provider code is surfaced with context while a mapping is added.",
+    "fail": "FAIL: Supabase error objects leak through application or UI boundaries without classification.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A diagnostic server log may retain the original provider error as attached context."
+    ],
+    "detection": "Search repository return types and throws for raw PostgrestError exposure.",
+    "remediation": "Translate provider codes into named outcomes and preserve the cause only for diagnostics.",
+    "validation": "Inspect repository error paths and confirm callers receive application-level error categories rather than raw client errors.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/features/auth/lib/queries.server.ts and feature queries.ts paths are separated from feature screens."
+    ],
+    "official_docs": [
+      "https://supabase.com/docs/guides/api/handling-errors-in-supabase-js"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "SUPA-003",
+    "statement": "map raw responses at infrastructure",
+    "scope": "Supabase query results crossing into application or domain code.",
+    "pass": "PASS: infrastructure maps raw rows and nullability into application/domain values.",
+    "warn": "WARN: a temporary raw projection is confined to a repository with a removal note.",
+    "fail": "FAIL: UI or domain code branches on raw Supabase row shape or relation payloads.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A repository may return a deliberate read-model DTO owned by the application boundary."
+    ],
+    "detection": "Search screens and domain modules for Supabase generated row type imports.",
+    "remediation": "Map the result inside the repository and return a named application model.",
+    "validation": "Inspect query consumers and confirm raw database response shapes stop at infrastructure adapters.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): feature query paths and feature screens/components are separate categories, providing a mapping seam without prescribing a repository class."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "SUPA-004",
+    "statement": "generated database types",
+    "scope": "Typed Supabase database access.",
+    "pass": "PASS: queries use generated Database types and update them when schema changes.",
+    "warn": "WARN: an unsupported query helper isolates a precise local type with a generation follow-up.",
+    "fail": "FAIL: database access replaces generated types with broad casts or invented row types.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A mapped application DTO may intentionally differ from the generated database row."
+    ],
+    "detection": "Search Supabase client creation for Database generics and casts around query results.",
+    "remediation": "Regenerate Database types and type the client with the generated schema.",
+    "validation": "Inspect Supabase client construction and confirm query typing originates from generated database types.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/api/rest/generating-types"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "SUPA-005",
+    "statement": "realtime subscription lifecycle",
+    "scope": "Supabase Realtime subscriptions in client UI.",
+    "pass": "PASS: a subscription is created for a stable key and removed during cleanup or key change.",
+    "warn": "WARN: a long-lived provider documents its ownership and teardown boundary.",
+    "fail": "FAIL: a component creates subscriptions without deterministic removal.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A process-level server listener may outlive a component when its shutdown hook removes it."
+    ],
+    "detection": "Search channel subscriptions for matching removeChannel, unsubscribe, or cleanup functions.",
+    "remediation": "Return cleanup from the owning effect or centralize lifecycle management in a provider.",
+    "validation": "Inspect each subscription creation and confirm a deterministic cleanup runs on unmount or key replacement.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/realtime/getting_started"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "DB-001",
+    "statement": "migration-tracked schema changes",
+    "scope": "Database schema, function, grant, and policy changes.",
+    "pass": "PASS: schema-affecting changes are represented by ordered migrations under version control.",
+    "warn": "WARN: a local experiment is discarded or promoted to a migration before shared use.",
+    "fail": "FAIL: production schema behavior depends on dashboard-only or manual untracked changes.",
+    "hard_blocker": true,
+    "exceptions": [
+      "An ephemeral local test database may be reset from tracked migrations."
+    ],
+    "detection": "Compare schema-related code changes with the migration history and deployment instructions.",
+    "remediation": "Add a reversible, ordered migration and regenerate dependent types where needed.",
+    "validation": "Inspect schema, policy, function, and grant changes and confirm each has a committed migration artifact.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/deployment/database-migrations"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "DB-002",
+    "statement": "RLS and minimum grants",
+    "scope": "Postgres tables, privileges, and Supabase exposed data.",
+    "pass": "PASS: exposed tables enable RLS and grants permit only required roles and operations.",
+    "warn": "WARN: a documented service-only table is inaccessible to browser roles.",
+    "fail": "FAIL: user-reachable data lacks RLS or grants exceed the operation's least privilege.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A non-exposed internal table may omit RLS only with restricted privileges and a documented boundary."
+    ],
+    "detection": "Inspect migrations for ALTER TABLE ENABLE ROW LEVEL SECURITY, policies, and GRANT statements.",
+    "remediation": "Enable RLS, add ownership-aware policies, and revoke unnecessary grants.",
+    "validation": "Inspect every exposed table's migration and confirm RLS policy plus minimum role grants protect its operations.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/database/postgres/row-level-security",
+      "https://supabase.com/docs/guides/database/secure-data"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "DB-003",
+    "statement": "function search_path/privileges",
+    "scope": "Postgres functions callable through the application or API.",
+    "pass": "PASS: functions set a safe search_path and use deliberate invoker/definer privileges with narrow grants.",
+    "warn": "WARN: a migration documents why elevated execution is required and its callable roles.",
+    "fail": "FAIL: a callable function has unsafe name resolution or broad execution privileges.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A private maintenance function may be ungranted to application roles but still sets its search path."
+    ],
+    "detection": "Inspect CREATE FUNCTION migrations for search_path, SECURITY mode, and GRANT EXECUTE.",
+    "remediation": "Set a secure search_path, choose privilege mode explicitly, and restrict execute grants.",
+    "validation": "Inspect each application-callable function and confirm search_path and execution grants are explicitly constrained.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/database/functions"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "DB-004",
+    "statement": "view security_invoker review",
+    "scope": "Postgres views exposed to application roles.",
+    "pass": "PASS: each exposed view deliberately uses and reviews security_invoker behavior with its underlying policies.",
+    "warn": "WARN: a legacy definer view is documented with owner, grants, and migration plan.",
+    "fail": "FAIL: an exposed view bypasses intended table policy through unreviewed security semantics.",
+    "hard_blocker": true,
+    "exceptions": [
+      "An internal owner-only reporting view may be unavailable to application roles."
+    ],
+    "detection": "Inspect CREATE VIEW migrations for security_invoker and the grants/policies of referenced tables.",
+    "remediation": "Set security_invoker where appropriate or document controlled definer ownership and grants.",
+    "validation": "Inspect each exposed view and confirm its security_invoker or deliberate alternative is reconciled with underlying RLS.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/database/tables"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "DB-005",
+    "statement": "atomic multi-write boundary",
+    "scope": "Operations that must persist multiple related database changes together.",
+    "pass": "PASS: all-or-nothing multi-write work uses a transaction or single RPC boundary.",
+    "warn": "WARN: independently recoverable writes document their compensation and partial-success UI.",
+    "fail": "FAIL: required related writes can leave an invalid partial state after an intermediate failure.",
+    "hard_blocker": true,
+    "exceptions": [
+      "An asynchronous outbox write may occur after the committed transaction when retries are idempotent."
+    ],
+    "detection": "Trace multi-step mutation flows for a transaction, RPC, or explicit compensation boundary.",
+    "remediation": "Move the related writes into one transaction or a database RPC with clear failure semantics.",
+    "validation": "Inspect invariant-preserving multi-write operations and confirm one atomic transaction or RPC encloses them.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "TS-001",
+    "statement": "no explicit any",
+    "scope": "TypeScript source and declarations.",
+    "pass": "PASS: uncertain values are unknown and narrowed with a real guard or schema.",
+    "warn": "WARN: a third-party declaration gap is isolated behind a typed adapter while upstream typing is pursued.",
+    "fail": "FAIL: explicit any erases a value's contract in application code.",
+    "hard_blocker": true,
+    "exceptions": [
+      "Generated or vendor files may retain any outside application ownership and are not re-exported as app contracts."
+    ],
+    "detection": "Search owned TypeScript for ': any', '<any>', and 'as any'.",
+    "remediation": "Replace any with unknown, a union, a generic, or a validated boundary type.",
+    "validation": "Search owned TypeScript and confirm explicit any is absent from maintained application contracts.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#any",
+      "https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html#any"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "TS-002",
+    "statement": "no unjustified suppression/assertion",
+    "scope": "TypeScript suppressions and assertions at unsafe boundaries.",
+    "pass": "PASS: an assertion follows runtime proof and a suppression names the verified upstream limitation.",
+    "warn": "WARN: a narrow, documented interop assertion is paired with a runtime guard.",
+    "fail": "FAIL: @ts-ignore, @ts-expect-error, non-null, or broad assertion hides an unvalidated unsafe value.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A compile-time exhaustive-check assertion may be used after the union is narrowed."
+    ],
+    "detection": "Search owned code for ts-ignore, ts-expect-error, non-null assertions, and broad casts.",
+    "remediation": "Validate the value, model the union, or isolate documented interop behind an adapter.",
+    "validation": "Inspect each suppression or assertion and confirm a preceding runtime proof or narrow documented interop boundary exists.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "TS-003",
+    "statement": "no server code through client barrels",
+    "scope": "Public index files and browser-reachable imports.",
+    "pass": "PASS: client-facing barrels export only browser-safe modules; .server code stays server-reachable only.",
+    "warn": "WARN: a shared type-only export is verified to erase from runtime output.",
+    "fail": "FAIL: a client import can reach a .server module, secret, or server client through an index barrel.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A server-only barrel may export server modules when it is itself unreachable from client routes."
+    ],
+    "detection": "Trace barrel exports from client routes and screens for .server paths or server client imports.",
+    "remediation": "Split server and browser entry points and export shared types with type-only imports.",
+    "validation": "Inspect client-reachable index exports and confirm no import path reaches a .server module or server credential client.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://www.typescriptlang.org/docs/handbook/modules/reference.html"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "ZOD-001",
+    "statement": "validate trust boundaries",
+    "scope": "Request, environment, webhook, provider, and persisted untrusted inputs.",
+    "pass": "PASS: unknown input is parsed by Zod before it becomes an application input or domain value.",
+    "warn": "WARN: a trusted internal call documents the prior validating boundary.",
+    "fail": "FAIL: untrusted input crosses into application or domain logic without validation.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A value constructed by a validated schema in the same flow need not be parsed again."
+    ],
+    "detection": "Trace unknown request/provider/environment values to their first schema parse.",
+    "remediation": "Define a Zod schema at the boundary and pass its parsed output inward.",
+    "validation": "Inspect every trust boundary and confirm unknown input is parsed with Zod before application/domain use.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://v3.zod.dev/?id=basic-usage"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "ZOD-002",
+    "statement": "infer input types from schema",
+    "scope": "Application input types validated by Zod.",
+    "pass": "PASS: TypeScript input types use z.infer from the schema that validates them.",
+    "warn": "WARN: a DTO adds a documented derived field after parsing.",
+    "fail": "FAIL: a parallel hand-written input interface can drift from its validation schema.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A domain value type may be narrower than the parsed transport input after construction."
+    ],
+    "detection": "Search schemas for matching manually declared input interfaces.",
+    "remediation": "Export z.infer<typeof Schema> and derive any domain value after parsing.",
+    "validation": "Inspect validated input types and confirm the caller type is inferred from the exact Zod schema used at the boundary.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://v3.zod.dev/?id=type-inference"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "ZOD-003",
+    "statement": "do not repeatedly parse trusted data",
+    "scope": "Already validated application and domain values.",
+    "pass": "PASS: parsed values retain their trusted type through the same internal flow.",
+    "warn": "WARN: revalidation occurs at a new trust boundary such as serialized storage or a queue.",
+    "fail": "FAIL: internal code repeatedly parses the same trusted value to compensate for unclear ownership.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Data decoded from an external cache or process boundary is untrusted again and must be parsed."
+    ],
+    "detection": "Search repeated schema.parse calls on values already typed as that schema output.",
+    "remediation": "Carry the parsed type inward and parse again only after a new untrusted boundary.",
+    "validation": "Trace parsed values through one operation and confirm additional parsing happens only after serialization or external ingress.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://v3.zod.dev/?id=basic-usage"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "UI-001",
+    "statement": "no nested component definitions",
+    "scope": "React component render functions.",
+    "pass": "PASS: reusable or stateful child components are declared at module scope.",
+    "warn": "WARN: a tiny render helper may stay local when it is not a component and captures no lifecycle.",
+    "fail": "FAIL: a component definition is nested in render and remounts or obscures ownership.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A pure local formatter returning markup may remain local when it is not used as a React component."
+    ],
+    "detection": "Search component bodies for capitalized function declarations or component arrow assignments.",
+    "remediation": "Hoist the child component or extract a cohesive module with explicit props.",
+    "validation": "Inspect render bodies and confirm capitalized React components are module-scoped rather than defined during render.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): reusable UI lives in app/core/components and app/features/*/components instead of the route registry category."
+    ],
+    "official_docs": [
+      "https://react.dev/learn/your-first-component"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "UI-002",
+    "statement": "explicit UI props/view models",
+    "scope": "Presentation components and screen-to-component contracts.",
+    "pass": "PASS: the screen maps route or application data into explicit semantic props or a cohesive named view model, and components render that contract.",
+    "warn": "WARN: a short-lived single-use leaf accepts a presentation-ready feature model and names the consumer or variation that would trigger a narrower contract.",
+    "fail": "FAIL: a reusable or item-varying component hardcodes product or route-specific copy, status, options, or CTA; imports a persistence record as its UI contract; reaches hidden data; or infers semantic state by parsing display strings.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Stable component-owned chrome or accessibility copy may remain local when it never varies by item, route, permission, or release state.",
+      "A presentation component may map a semantic variant such as sale or forest to CSS classes locally."
+    ],
+    "detection": "Inspect reusable components for item-specific literals, release dates, version options, CTA policy, raw persistence types, CSS tokens carried by data models, index-based semantic state, and comparisons or includes calls against display labels.",
+    "remediation": "Have the screen map validated route or application data into a presentation-ready named view model; pass varying copy, options, status, CTA, and semantic visual variants as explicit values, then let components map those values to markup and CSS.",
+    "validation": "Inspect two representative screen view models and confirm displayed copy, options, status, CTA, and visual variants come from semantic props without item-specific component literals, persistence shapes, or display-label parsing.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/features/*/screens and app/features/*/components are separate presentation categories."
+    ],
+    "official_docs": [
+      "https://react.dev/learn/passing-props-to-a-component"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "UI-003",
+    "statement": "index is explicit public API only",
+    "scope": "Feature and component index modules.",
+    "pass": "PASS: an index exports a deliberate small public surface.",
+    "warn": "WARN: a temporary compatibility export lists its consumer and removal condition.",
+    "fail": "FAIL: an index wildcard-exports internals or accidentally exposes server-only implementation.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A package root may re-export a curated set of stable modules."
+    ],
+    "detection": "Inspect index files for export stars and internal/server implementation paths.",
+    "remediation": "Replace blanket exports with named public exports and split server entry points.",
+    "validation": "Inspect index files and confirm each export is intentional, consumer-facing, and browser-safe where applicable.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/features/* directories are feature boundaries; no index.ts path was treated as evidence of runtime behavior."
+    ],
+    "official_docs": [
+      "https://www.typescriptlang.org/docs/handbook/modules/reference.html"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "UI-004",
+    "statement": "screen composes presentation only",
+    "scope": "Feature screen modules.",
+    "pass": "PASS: a screen arranges view models and presentation components without data fetching or persistence.",
+    "warn": "WARN: a screen may contain small display-only mapping near the composed component.",
+    "fail": "FAIL: a screen directly queries infrastructure, owns route protocol, or embeds domain policy.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A screen may receive already prepared loader data and callbacks as explicit inputs."
+    ],
+    "detection": "Search screen modules for Supabase clients, route request APIs, and business policy branches.",
+    "remediation": "Move adaptation to the route/application layer and pass a view model into the screen.",
+    "validation": "Inspect screen imports and confirm they compose presentation rather than fetch, mutate, or enforce domain policy.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/routes.ts and feature api paths are distinct from app/features/*/screens presentation paths."
+    ],
+    "official_docs": [
+      "https://reactrouter.com/start/framework/route-module"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "UI-005",
+    "statement": "framework-native state ownership",
+    "scope": "React UI state and React Router state.",
+    "pass": "PASS: ephemeral UI uses useState, external synchronization uses useEffect, and router state uses router APIs.",
+    "warn": "WARN: a custom state abstraction documents the lifecycle it improves.",
+    "fail": "FAIL: state is duplicated across framework ownership boundaries without synchronization.",
+    "hard_blocker": false,
+    "exceptions": [
+      "An isolated state machine may own a complex local interaction with a clear input/output boundary."
+    ],
+    "detection": "Inspect hooks that mirror router data or use effects for ordinary derived UI state.",
+    "remediation": "Use the framework-native owner and derive values during render where possible.",
+    "validation": "Inspect state variables and confirm each is owned by React local UI, an external synchronization, or React Router as appropriate.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://react.dev/learn/synchronizing-with-effects",
+      "https://react.dev/learn/you-might-not-need-an-effect",
+      "https://reactrouter.com/7.5.1/start/framework/pending-ui"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "UI-006",
+    "statement": "preview and customer renderer parity",
+    "scope": "Admin previews and customer-facing rendering of the same published view model or SDUI contract.",
+    "pass": "PASS: preview and customer surfaces use the same renderer or shared rendering core over the same validated view model.",
+    "warn": "WARN: surface-specific chrome wraps one shared renderer and parity is checked on representative fixtures.",
+    "fail": "FAIL: preview and customer rendering duplicate component selection or transformation logic that can drift independently.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Surface-specific navigation, controls, and diagnostics may differ outside the shared published content boundary."
+    ],
+    "detection": "Compare preview and customer render paths for duplicated switch statements, mappings, view-model transforms, or component registries.",
+    "remediation": "Extract one rendering core or component registry and feed both surfaces the same validated fixture or published view model.",
+    "validation": "Run a preview parity test with one validated view model and confirm the admin preview and customer renderer produce the same semantic component tree.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Junho Plate review-derived contract: a preview exists to represent the customer result, so duplicated renderers are an operational drift risk."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "UI-007",
+    "statement": "stylesheet ownership and scoping",
+    "scope": "Styles reachable by multiple routes, bundles, features, or admin and customer surfaces.",
+    "pass": "PASS: styles have an explicit owner through modules, a feature namespace, a component boundary, or another verified scoping mechanism.",
+    "warn": "WARN: a deliberate global utility or design token is documented and tested across all reachable surfaces.",
+    "fail": "FAIL: generic global selectors with different definitions can be loaded together and alter another surface unintentionally.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Intentional resets, tokens, and utilities may be global when their contract is singular and documented."
+    ],
+    "detection": "Search reachable stylesheets and built CSS for duplicate global selectors with conflicting declarations across surface owners.",
+    "remediation": "Adopt CSS Modules, an explicit feature namespace, a component scope, or one canonical shared global definition.",
+    "validation": "Search the browser bundle and component stylesheets and confirm reachable global selectors do not collide across admin and customer ownership.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Junho Plate review-derived contract: separately authored admin and customer styles can enter one global bundle and must not share accidental class ownership."
+    ],
+    "official_docs": [
+      "https://vite.dev/guide/features.html#css-modules"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "ERR-001",
+    "statement": "classify empty/domain/external/system",
+    "scope": "User-visible outcomes from reads and mutations.",
+    "pass": "PASS: outcomes are explicitly normal empty, expected domain, recoverable external, or unexpected system.",
+    "warn": "WARN: an ambiguous provider failure is temporarily shown as recoverable external with diagnostics.",
+    "fail": "FAIL: a user-visible failure is flattened into an unclassified null or generic success path.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A normal empty collection is a first-class non-error state."
+    ],
+    "detection": "Trace repository and route failure returns to their rendered state category.",
+    "remediation": "Introduce named outcome types and map each category to a deliberate UI response.",
+    "validation": "Inspect representative outcomes and confirm empty, domain, external, and system paths each render distinct semantics.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/core/screens/404.tsx and app/core/screens/error.tsx are distinct from route and feature screen paths."
+    ],
+    "official_docs": [
+      "https://reactrouter.com/how-to/error-boundary"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "ERR-002",
+    "statement": "no swallowed errors or fake success",
+    "scope": "Catch blocks, fallback chains, and mutation responses.",
+    "pass": "PASS: caught errors retain a classified outcome and failed mutations do not report success.",
+    "warn": "WARN: a documented degraded read state remains visible with its cause logged safely.",
+    "fail": "FAIL: catch returns [] or null, ignores the error, or claims an effect succeeded when it failed.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A normal not-found result may map to an explicit empty state after verified classification."
+    ],
+    "detection": "Search catch blocks for empty bodies, return []/null, and unconditional success responses.",
+    "remediation": "Classify the failure, show a bounded recovery state, and preserve diagnostic context.",
+    "validation": "Inspect catch paths and confirm each produces a classified outcome rather than a silent fallback or fake success.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): app/core/screens/error.tsx is separate from feature query and server-client paths, preserving an explicit failure-presentation seam."
+    ],
+    "official_docs": [
+      "https://supabase.com/docs/guides/api/handling-errors-in-supabase-js"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "ERR-003",
+    "statement": "visible, bounded, idempotent fallback",
+    "scope": "Retries, degraded external dependencies, and recovery UI.",
+    "pass": "PASS: fallback is visible, retry attempts are bounded, and retried effects are idempotent.",
+    "warn": "WARN: a non-idempotent effect offers an explicit user-confirmed retry path instead of automatic retry.",
+    "fail": "FAIL: hidden fallback chains retry indefinitely or repeat a non-idempotent mutation.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A read-only cache fallback may be automatic when stale state is clearly labeled."
+    ],
+    "detection": "Inspect retry loops, catch fallbacks, and mutation retry behavior for bounds and idempotency keys.",
+    "remediation": "Expose degraded state, cap retries, and add idempotency or require explicit confirmation.",
+    "validation": "Trace fallback behavior and confirm users can see it, attempts are bounded, and automatic retries are idempotent.",
+    "wemake_commits": [
+      "874adeb6b1dc31c78d4654569abc003d3dc3937e"
+    ],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): explicit 404 and error screens exist as visible presentation categories rather than hidden data defaults."
+    ],
+    "official_docs": [
+      "https://reactrouter.com/how-to/error-boundary"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "TEST-001",
+    "statement": "risk-value-proportional tests",
+    "scope": "Automated tests for changed product behavior.",
+    "pass": "PASS: tests target meaningful risk, policy, integration, or regression value with the smallest sufficient scope.",
+    "warn": "WARN: low-risk presentation behavior may rely on focused manual verification when automated value is low.",
+    "fail": "FAIL: a material behavior change lacks a justified verification path.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Generated code and third-party behavior need not be re-tested by application tests."
+    ],
+    "detection": "Inspect changed behavior against tests and identify the risk or regression each test covers.",
+    "remediation": "Add the smallest test that proves the important behavior or document a focused verification reason.",
+    "validation": "Inspect changed behaviors and confirm each material risk has a proportional automated or explicit verification method.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): e2e/auth, e2e/settings, and e2e/users organize verification by user risk area."
+    ],
+    "official_docs": [
+      "https://reactrouter.com/start/framework/testing"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "TEST-002",
+    "statement": "no tests for tests' sake",
+    "scope": "Test suite design and assertions.",
+    "pass": "PASS: each test proves product behavior, a boundary contract, or a real regression risk.",
+    "warn": "WARN: a snapshot is retained only when a reviewer can name the visual or structural contract it protects.",
+    "fail": "FAIL: tests only exercise libraries, private call counts, meaningless snapshots, or mock choreography.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A narrow adapter contract test may assert an externally required call shape."
+    ],
+    "detection": "Inspect assertions for user-observable behavior rather than implementation call counts or mock sequences.",
+    "remediation": "Replace implementation-detail tests with a focused behavior or boundary contract assertion.",
+    "validation": "Inspect representative tests and confirm each assertion maps to a product risk, boundary contract, or prior regression.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Plate 8449384cdfad30f20337bad6536b0c7d46a3dde5 path category observation (structure only): e2e tests are grouped under auth, settings, and users behavior categories; this observation establishes no coverage or snapshot quota."
+    ],
+    "official_docs": [
+      "https://reactrouter.com/start/framework/testing"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "BUILD-001",
+    "statement": "production artifact smoke verification",
+    "scope": "Changes that affect routing, bundling, runtime entrypoints, deployment configuration, or claims of deployable readiness.",
+    "pass": "PASS: the declared production build succeeds and the actual built artifact serves the critical path in a smoke check.",
+    "warn": "WARN: a low-risk non-deployable prototype explicitly limits its claim to development mode and records the missing artifact check.",
+    "fail": "FAIL: deployable or production-ready completion is claimed from a development server alone, or the built artifact cannot serve the critical path.",
+    "hard_blocker": false,
+    "exceptions": [
+      "A documentation-only or pure-library change may use a narrower verification path when no deployable artifact is affected."
+    ],
+    "detection": "Inspect package scripts and deployment configuration, then compare development checks with the command that creates and serves the production artifact.",
+    "remediation": "Run the declared build, serve or execute its output in the target-compatible runtime, and smoke the smallest critical route and failure path.",
+    "validation": "Run the declared production build and smoke test the built artifact, then confirm the critical route responds from that artifact.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Junho Plate review-derived contract: a working development server is not evidence that the deployment artifact can boot or serve the product flow."
+    ],
+    "official_docs": [
+      "https://reactrouter.com/start/framework/deploying"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "BUILD-002",
+    "statement": "runtime dependency cost justification",
+    "scope": "New or retained production dependencies and their reachable browser or server bundles.",
+    "pass": "PASS: each runtime dependency protects a named boundary, removes justified repeated implementation, or supplies required platform behavior, and its reachable cost is inspected.",
+    "warn": "WARN: an existing dependency is retained for compatibility with a named removal trigger and no new consumer is added.",
+    "fail": "FAIL: a runtime dependency is added or retained for one trivial internal constant or unused path without a named boundary, consumer, or comparative build evidence.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Development-only tooling may be justified by repeatable verification or generation even when it does not ship at runtime."
+    ],
+    "detection": "Inspect package and lockfile diffs, import reachability, and build output for new or unused runtime dependencies.",
+    "remediation": "Use an installed fit-for-purpose dependency at a real boundary, replace trivial use with platform or TypeScript primitives, or remove the unused package and re-build.",
+    "validation": "Inspect the dependency graph and bundle diff and confirm each added runtime dependency protects a named boundary or removes justified repeated implementation.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Junho Plate review-derived contract: dependency choice is an engineering tradeoff; a library installed for one trivial local value creates cost without boundary value."
+    ],
+    "official_docs": [],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "AGENT-001",
+    "statement": "Cloudflare agent runtime by default",
+    "scope": "New stateful or durable agent workloads when Cloudflare Workers and the Agents SDK are compatible with task constraints and installed capabilities.",
+    "pass": "PASS: compatible agent workloads use the Cloudflare Agents SDK for durable identity and state, and use Workflows or agent execution primitives according to duration and recovery needs.",
+    "warn": "WARN: an incompatible event or runtime uses an explicit adapter seam and records why Cloudflare Agents SDK cannot be used.",
+    "fail": "FAIL: a compatible project that selected Cloudflare Agents SDK bypasses it with an ad-hoc in-process agent loop that loses required state, recovery, or observability.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Do not install or force Cloudflare infrastructure when the event, deployment target, time budget, or existing stack forbids it."
+    ],
+    "detection": "Inspect agent entrypoints, state ownership, workflow duration, retry needs, and installed Cloudflare bindings before selecting the runtime.",
+    "remediation": "Use Agent for durable identity and interaction, Workflows for retryable multi-step execution, and an adapter boundary when the target runtime differs.",
+    "validation": "Inspect agent and workflow entrypoints and confirm the selected Cloudflare runtime or documented adapter matches state, duration, recovery, and task constraints.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://developers.cloudflare.com/agents/",
+      "https://developers.cloudflare.com/agents/concepts/workflows/"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "AGENT-002",
+    "statement": "independent judge evidence boundary",
+    "scope": "Multi-agent generation, review, ranking, acceptance, and repair workflows.",
+    "pass": "PASS: producer agents and judge roles are separated, the judge reads immutable candidate evidence, and deterministic tests or policy gates own final acceptance where possible.",
+    "warn": "WARN: a single-agent workflow exposes uncertainty and remains subject to independent deterministic verification because parallel judging adds no proportional value.",
+    "fail": "FAIL: the same generation result approves itself from confidence alone, or a judge can silently mutate the candidate it claims to assess.",
+    "hard_blocker": false,
+    "exceptions": [
+      "Do not add multiple agents merely to increase agent count; one producer plus deterministic verification is preferable when independent perspectives add no material evidence."
+    ],
+    "detection": "Trace candidate production, judge inputs, mutation permissions, verdict evidence, and the final acceptance gate.",
+    "remediation": "Give producer and judge distinct roles, pass immutable candidate artifacts and criteria to the judge, preserve dissent, and require deterministic checks for executable claims.",
+    "validation": "Trace the producer and judge workflow and confirm the judge reads immutable evidence, cannot silently mutate the candidate, and cannot replace deterministic acceptance tests.",
+    "wemake_commits": [],
+    "plate_evidence": [
+      "Junho Plate review-derived contract: AI-generated candidates require an independent evidence boundary, while deterministic policy and verification remain the final acceptance authority."
+    ],
+    "official_docs": [
+      "https://developers.cloudflare.com/agents/runtime/execution/sub-agents/",
+      "https://developers.cloudflare.com/agents/concepts/workflows/"
+    ],
+    "confidence": "plate-convention"
+  },
+  {
+    "id": "SEC-001",
+    "statement": "server-only secrets",
+    "scope": "Environment secrets, service-role credentials, and privileged tokens.",
+    "pass": "PASS: secrets are read only in server-reachable modules and never serialized to browser output.",
+    "warn": "WARN: a public browser key is labeled public and carries no elevated privilege.",
+    "fail": "FAIL: a secret or service-role credential is imported, embedded, or exposed to client code.",
+    "hard_blocker": true,
+    "exceptions": [
+      "Public publishable configuration may reach the browser only after privilege review."
+    ],
+    "detection": "Search client bundles, route data, logs, and environment access for secret variable names and service keys.",
+    "remediation": "Move secret use into a server-only module and pass only a minimal authorized result to the client.",
+    "validation": "Inspect browser-reachable imports and serialized loader data and confirm no secret or service-role value can reach them.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/database/secure-data"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "SEC-002",
+    "statement": "server-side authorization",
+    "scope": "Every protected resource read, mutation, remote effect, and destructive operation.",
+    "pass": "PASS: authorization is enforced on the server against the requested resource and action.",
+    "warn": "WARN: a UI permission hint may improve UX but is not treated as enforcement.",
+    "fail": "FAIL: client role checks are the only gate for a protected server operation.",
+    "hard_blocker": true,
+    "exceptions": [
+      "Public operations may omit authorization only when their server repository policy is intentionally public."
+    ],
+    "detection": "Trace protected actions from UI through route/server handlers to authorization policy checks.",
+    "remediation": "Add server resource-level authorization before query, mutation, or remote effect execution.",
+    "validation": "Inspect protected server handlers and confirm resource-level authorization occurs before the protected operation.",
+    "wemake_commits": [],
+    "plate_evidence": [],
+    "official_docs": [
+      "https://supabase.com/docs/guides/database/postgres/row-level-security"
+    ],
+    "confidence": "normative"
+  },
+  {
+    "id": "SEC-003",
+    "statement": "consent for remote/destructive effects",
+    "scope": "External sends, purchases, deletes, privileged changes, and irreversible actions.",
+    "pass": "PASS: the user gives explicit, informed consent immediately before a remote or destructive effect.",
+    "warn": "WARN: a reversible draft may prepare an effect but cannot execute it without confirmation.",
+    "fail": "FAIL: code performs a remote or destructive effect without explicit user consent or approved server automation authority.",
+    "hard_blocker": true,
+    "exceptions": [
+      "A documented server automation may execute only within its pre-approved scope and audit trail."
+    ],
+    "detection": "Trace effect triggers for a confirmation intent, consent record, or approved automation identity.",
+    "remediation": "Add an explicit confirmation step and server-side scope check before execution.",
+    "validation": "Inspect each remote or destructive trigger and confirm explicit consent or documented automation authority precedes execution.",
+    "wemake_commits": [
+      "a0d678874d1de875a6a89456c2b4221522a81ee6"
+    ],
+    "plate_evidence": [],
+    "official_docs": [],
+    "confidence": "wemake-derived"
+  }
+]

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Junho Plate"
+  short_description: "Apply Plate-style guardrails to React Router 7"
+  default_prompt: "Use $junho-plate to inspect this React Router 7 project and route my request through the correct guarded workflow, regardless of Plate provenance."
+policy:
+  allow_implicit_invocation: true

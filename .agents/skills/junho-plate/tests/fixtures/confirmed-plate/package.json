@@ -1,0 +1,10 @@
+{
+  "name": "synthetic-supaplate-fixture",
+  "description": "A synthetic fixture for provenance detection.",
+  "supaplateProvenance": true,
+  "dependencies": {
+    "react-router": "7.1.0",
+    "@supabase/supabase-js": "2.45.0",
+    "drizzle-orm": "0.40.0"
+  }
+}

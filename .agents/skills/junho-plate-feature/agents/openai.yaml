@@ -1,0 +1,6 @@
+interface:
+  display_name: "Junho Plate Feature"
+  short_description: "Build complete RR7 vertical feature slices"
+  default_prompt: "Use $junho-plate-feature to implement this feature as a minimal React Router 7 vertical slice."
+policy:
+  allow_implicit_invocation: false

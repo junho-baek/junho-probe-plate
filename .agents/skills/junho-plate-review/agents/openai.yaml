@@ -1,0 +1,6 @@
+interface:
+  display_name: "Junho Plate Review"
+  short_description: "Review one RR7 feature slice without edits"
+  default_prompt: "Use $junho-plate-review to audit this React Router 7 feature slice without changing files, regardless of Plate provenance."
+policy:
+  allow_implicit_invocation: false

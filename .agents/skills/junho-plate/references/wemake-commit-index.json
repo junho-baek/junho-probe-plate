@@ -1,0 +1,3479 @@
+{
+  "source_url": "https://github.com/nomadcoders/wemake",
+  "pinned_head": "21ceb5d55c608772ed374a651eaf1639eaec6d5c",
+  "verified_at": "2026-08-04",
+  "record_count": 135,
+  "records": [
+    {
+      "number": "001",
+      "hash": "a2fd948e70d928bdb3063d2360a6d0ff27a22054",
+      "author_date": "2024-12-02T11:09:50+09:00",
+      "subject": "Initial commit from create-react-router",
+      "changed_paths": [
+        ".dockerignore",
+        ".gitignore",
+        "Dockerfile",
+        "Dockerfile.bun",
+        "Dockerfile.pnpm",
+        "README.md",
+        "app/app.css",
+        "app/root.tsx",
+        "app/routes.ts",
+        "app/routes/home.tsx",
+        "app/welcome/logo-dark.svg",
+        "app/welcome/logo-light.svg",
+        "app/welcome/welcome.tsx",
+        "package-lock.json",
+        "package.json",
+        "public/favicon.ico",
+        "react-router.config.ts",
+        "tailwind.config.ts",
+        "tsconfig.json",
+        "vite.config.ts"
+      ],
+      "technical_topics": [
+        "project scaffold",
+        "route framework"
+      ],
+      "architecture_stage": "application foundation",
+      "rule_ids": [
+        "ARCH-004",
+        "RR7-003",
+        "RR7-005"
+      ],
+      "classification": "foundation",
+      "audit_note": "Creates the Router shell with generated route types and a root ErrorBoundary that later feature routes extend."
+    },
+    {
+      "number": "002",
+      "hash": "4dea62bd58f469c6f84c31eca09037beaa1251ce",
+      "author_date": "2024-12-02T12:04:54+09:00",
+      "subject": "1.0 Create Project",
+      "changed_paths": [
+        ".dockerignore",
+        "Dockerfile",
+        "Dockerfile.bun",
+        "Dockerfile.pnpm",
+        "README.md"
+      ],
+      "technical_topics": [
+        "deployment",
+        "repository setup"
+      ],
+      "architecture_stage": "project foundation",
+      "rule_ids": [
+        "ARCH-004"
+      ],
+      "classification": "foundation",
+      "audit_note": "Narrows the starter setup into a deployable course project baseline."
+    },
+    {
+      "number": "003",
+      "hash": "7ea2938489c0d780131f77d569e4a394b0755662",
+      "author_date": "2024-12-02T12:10:39+09:00",
+      "subject": "1.1 Routes File",
+      "changed_paths": [
+        "app/potato/tomato.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "route registry"
+      ],
+      "architecture_stage": "route-adapter foundation",
+      "rule_ids": [
+        "ARCH-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces explicit route registration before feature behavior is added."
+    },
+    {
+      "number": "004",
+      "hash": "43420ba21ba7889e08b29043b3af3d4babd2d1ef",
+      "author_date": "2024-12-02T13:03:54+09:00",
+      "subject": "1.3 Layout Component",
+      "changed_paths": [
+        "app/potato/tomato.tsx"
+      ],
+      "technical_topics": [
+        "route metadata",
+        "stylesheet links"
+      ],
+      "architecture_stage": "route module metadata",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds route-local links and meta exports while renaming the component; despite the lesson title, this diff does not add a layout seam."
+    },
+    {
+      "number": "005",
+      "hash": "21e224225e4707cb071c4b53f1fe1d79d6797d7a",
+      "author_date": "2024-12-03T08:07:44+09:00",
+      "subject": "1.4 Tailwind",
+      "changed_paths": [
+        "app/potato/tomato.tsx",
+        "app/routes.ts",
+        "app/routes/home.tsx",
+        "app/welcome/logo-dark.svg",
+        "app/welcome/logo-light.svg",
+        "app/welcome/welcome.tsx"
+      ],
+      "technical_topics": [
+        "home route",
+        "styling"
+      ],
+      "architecture_stage": "route presentation",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Replaces the starter route with the first styled home composition."
+    },
+    {
+      "number": "006",
+      "hash": "14a5abec69407df634a8ed2ab6c9bc550d77908b",
+      "author_date": "2024-12-03T09:13:47+09:00",
+      "subject": "1.5 Shadcn",
+      "changed_paths": [
+        "app/app.css",
+        "app/components/ui/button.tsx",
+        "app/lib/utils.ts",
+        "app/root.tsx",
+        "app/routes/home.tsx",
+        "components.json",
+        "package-lock.json",
+        "package.json",
+        "tailwind.config.ts"
+      ],
+      "technical_topics": [
+        "design-system primitives"
+      ],
+      "architecture_stage": "shared UI foundation",
+      "rule_ids": [
+        "UI-002",
+        "ARCH-004"
+      ],
+      "classification": "foundation",
+      "audit_note": "Adds reusable UI primitives and the utility styling base used across features."
+    },
+    {
+      "number": "007",
+      "hash": "d5a5c5f23ff624eed09c45fc29d02156028fc15b",
+      "author_date": "2024-12-03T11:47:54+09:00",
+      "subject": "2.1 Cursor Rules",
+      "changed_paths": [
+        ".cursorrules"
+      ],
+      "technical_topics": [
+        "editor guidance"
+      ],
+      "architecture_stage": "teaching setup",
+      "rule_ids": [
+        "ARCH-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds course editor rules as temporary instructional setup rather than an application architecture boundary."
+    },
+    {
+      "number": "008",
+      "hash": "fe2ca4a5363072ae26665cc34bd3cf0b17148484",
+      "author_date": "2024-12-04T08:20:42+09:00",
+      "subject": "3.1 Navigation part One",
+      "changed_paths": [
+        "app/app.css",
+        "app/common/components/navigation.tsx",
+        "app/common/components/ui/button.tsx",
+        "app/common/components/ui/dropdown-menu.tsx",
+        "app/common/components/ui/navigation-menu.tsx",
+        "app/common/components/ui/separator.tsx",
+        "app/common/pages/home-page.tsx",
+        "app/features/users/components/user-avatar.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/features/users/queries.ts",
+        "app/features/users/schema.ts",
+        "app/lib/utils.ts",
+        "app/root.tsx",
+        "app/routes.ts",
+        "app/routes/home.tsx",
+        "components.json",
+        "package-lock.json",
+        "package.json",
+        "tailwind.config.ts"
+      ],
+      "technical_topics": [
+        "navigation components"
+      ],
+      "architecture_stage": "shared navigation UI",
+      "rule_ids": [
+        "UI-002",
+        "UI-005"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Builds the reusable navigation surface and its explicit interaction props."
+    },
+    {
+      "number": "009",
+      "hash": "880c71d0b5334bdaa4c31a618b6d99815e226405",
+      "author_date": "2024-12-04T08:51:16+09:00",
+      "subject": "3.2 Navigation part Two",
+      "changed_paths": [
+        "app/common/components/navigation.tsx"
+      ],
+      "technical_topics": [
+        "navigation interaction"
+      ],
+      "architecture_stage": "shared UI refinement",
+      "rule_ids": [
+        "UI-002",
+        "UI-005"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Refines the navigation behavior without changing data ownership."
+    },
+    {
+      "number": "010",
+      "hash": "07b606898e8e9e163cbaffbc338bf9544360614b",
+      "author_date": "2024-12-04T09:08:12+09:00",
+      "subject": "3.3 Recap",
+      "changed_paths": [
+        "app/common/components/navigation.tsx"
+      ],
+      "technical_topics": [
+        "navigation recap"
+      ],
+      "architecture_stage": "teaching recap",
+      "rule_ids": [
+        "UI-002"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Captures a temporary instructional recap commit, so it is not independent production guidance."
+    },
+    {
+      "number": "011",
+      "hash": "7d077faa40d91b620b60df9f670420228daee07d",
+      "author_date": "2024-12-04T09:48:17+09:00",
+      "subject": "3.4 Navigation part Three",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/common/components/ui/avatar.tsx",
+        "app/root.tsx",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "authenticated navigation affordances"
+      ],
+      "architecture_stage": "shared UI refinement",
+      "rule_ids": [
+        "UI-002",
+        "UI-005"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Extends navigation with avatar-oriented UI while retaining a shared component boundary."
+    },
+    {
+      "number": "012",
+      "hash": "2c76d525f148d39777c2f1a4f5881b68d07593b4",
+      "author_date": "2024-12-04T10:37:53+09:00",
+      "subject": "3.5 Product Card",
+      "changed_paths": [
+        "app/common/components/ui/card.tsx",
+        "app/common/pages/home-page.tsx",
+        "app/features/products/components/product-card.tsx",
+        "app/root.tsx"
+      ],
+      "technical_topics": [
+        "product card"
+      ],
+      "architecture_stage": "feature presentation component",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces a product-specific card instead of embedding that presentation in the home route."
+    },
+    {
+      "number": "013",
+      "hash": "3c1245472ed1d497eb29cee2382992b1b9cd907b",
+      "author_date": "2024-12-04T11:08:56+09:00",
+      "subject": "3.6 Post Card",
+      "changed_paths": [
+        ".cursorrules",
+        "app/common/components/ui/card.tsx",
+        "app/common/pages/home-page.tsx",
+        "app/features/community/components/post-card.tsx",
+        "app/root.tsx"
+      ],
+      "technical_topics": [
+        "post card"
+      ],
+      "architecture_stage": "feature presentation component",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds a community card seam and adjusts the home composition to consume it."
+    },
+    {
+      "number": "014",
+      "hash": "bf86222cde59a761aefef84bbf10827118d63580",
+      "author_date": "2024-12-04T11:38:55+09:00",
+      "subject": "3.7 IdeasGPT Card",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/community/components/post-card.tsx",
+        "app/features/ideas/components/idea-card.tsx"
+      ],
+      "technical_topics": [
+        "idea card"
+      ],
+      "architecture_stage": "feature presentation component",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Creates an ideas card boundary for the home feed composition."
+    },
+    {
+      "number": "015",
+      "hash": "3d6d44389ff5ea991e7241c8665485c787a8e8fe",
+      "author_date": "2024-12-04T12:15:09+09:00",
+      "subject": "3.8 Job Card",
+      "changed_paths": [
+        "app/common/components/ui/badge.tsx",
+        "app/common/pages/home-page.tsx",
+        "app/features/jobs/components/job-card.tsx"
+      ],
+      "technical_topics": [
+        "job card"
+      ],
+      "architecture_stage": "feature presentation component",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds a job card as a feature-facing presentation contract."
+    },
+    {
+      "number": "016",
+      "hash": "49a8f835a310fd9fc847df13bb621f3f7e195b3d",
+      "author_date": "2024-12-04T12:33:32+09:00",
+      "subject": "3.9 Team Card",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/teams/components/team-card.tsx"
+      ],
+      "technical_topics": [
+        "team card"
+      ],
+      "architecture_stage": "feature presentation component",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Completes the first set of feature card components used by the shared home screen."
+    },
+    {
+      "number": "017",
+      "hash": "86cefbb6a7793bd0830bf59c88e9cfe3ebb92164",
+      "author_date": "2024-12-04T13:14:37+09:00",
+      "subject": "3.10 Products Routes",
+      "changed_paths": [
+        "app/features/products/pages/categories-page.tsx",
+        "app/features/products/pages/category-page.tsx",
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "app/features/products/pages/leaderboard-page.tsx",
+        "app/features/products/pages/monthly-leaderboard-page.tsx",
+        "app/features/products/pages/products-page.tsx",
+        "app/features/products/pages/promote-page.tsx",
+        "app/features/products/pages/search-page.tsx",
+        "app/features/products/pages/submit-page.tsx",
+        "app/features/products/pages/weekly-leaderboard-page.tsx",
+        "app/features/products/pages/yearly-leaderboard-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "product route modules"
+      ],
+      "architecture_stage": "route feature expansion",
+      "rule_ids": [
+        "RR7-001",
+        "UI-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Registers product routes with starter loaders, a temporary route scaffold rather than loader-owned production data."
+    },
+    {
+      "number": "018",
+      "hash": "27b4717b8257a2f61c1ca17458c3996c182cf35f",
+      "author_date": "2024-12-05T08:21:58+09:00",
+      "subject": "3.11 Loader Function",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/products/pages/products-page.tsx"
+      ],
+      "technical_topics": [
+        "loader data"
+      ],
+      "architecture_stage": "server-read route protocol",
+      "rule_ids": [
+        "RR7-001",
+        "RR7-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Uses a hello-world loader with console logging and untyped data, a temporary lesson before the typed route refinements that follow."
+    },
+    {
+      "number": "019",
+      "hash": "c14569ea751224d0f6cf0f4cc64efe49613482f2",
+      "author_date": "2024-12-05T08:36:28+09:00",
+      "subject": "3.12 Type Safety",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx"
+      ],
+      "technical_topics": [
+        "generated route props"
+      ],
+      "architecture_stage": "typed route adapter",
+      "rule_ids": [
+        "RR7-003",
+        "TS-002"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Replaces an untyped loader-data prop with the generated Route component contract."
+    },
+    {
+      "number": "020",
+      "hash": "c9b8baec70fa8939a9c064be37db6022c940d75b",
+      "author_date": "2024-12-05T08:44:36+09:00",
+      "subject": "3.13 Redirects and Resource Routes",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/products/pages/products-page.tsx"
+      ],
+      "technical_topics": [
+        "redirect",
+        "resource routes"
+      ],
+      "architecture_stage": "route control flow",
+      "rule_ids": [
+        "RR7-005"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Demonstrates route-level redirects and resource endpoints as router-owned control flow."
+    },
+    {
+      "number": "021",
+      "hash": "40265e3e5717a1db05131bf8e5684edaad5f2be8",
+      "author_date": "2024-12-05T09:29:13+09:00",
+      "subject": "3.14 Leaderboards Page",
+      "changed_paths": [
+        "app/common/components/hero.tsx",
+        "app/features/products/pages/leaderboard-page.tsx",
+        "app/features/products/pages/leaderboards-redirection-page.tsx",
+        "app/root.tsx",
+        "app/routes.ts",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "leaderboard route structure"
+      ],
+      "architecture_stage": "product route composition",
+      "rule_ids": [
+        "RR7-001",
+        "UI-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Removes a starter loader and renders fake leaderboard data, a temporary lesson rather than a real loader-backed screen."
+    },
+    {
+      "number": "022",
+      "hash": "99bbdb1e6e157bbe941ab9857a33d46b5ec822ab",
+      "author_date": "2024-12-05T10:20:35+09:00",
+      "subject": "3.15 Data Validation",
+      "changed_paths": [
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "Zod date parameters"
+      ],
+      "architecture_stage": "validated route boundary",
+      "rule_ids": [
+        "ZOD-001",
+        "RR7-005",
+        "ERR-001"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Validates route parameters and maps invalid or future dates to explicit 400 responses."
+    },
+    {
+      "number": "023",
+      "hash": "9bf3856cec8027a3df3e58c6b1828a43d5649067",
+      "author_date": "2024-12-05T10:51:07+09:00",
+      "subject": "3.16 Daily Leaderboard",
+      "changed_paths": [
+        "app/common/components/hero.tsx",
+        "app/common/components/product-pagination.tsx",
+        "app/common/components/ui/button.tsx",
+        "app/common/components/ui/pagination.tsx",
+        "app/features/products/components/product-card.tsx",
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "app/root.tsx"
+      ],
+      "technical_topics": [
+        "daily leaderboard presentation"
+      ],
+      "architecture_stage": "loader-fed screen",
+      "rule_ids": [
+        "RR7-001",
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Connects daily leaderboard UI and pagination components to the route-level data shape."
+    },
+    {
+      "number": "024",
+      "hash": "2d4ba7aff8ab8541a3c1016d1d1b15a6d0eea819",
+      "author_date": "2024-12-05T11:24:32+09:00",
+      "subject": "3.17 Pagination",
+      "changed_paths": [
+        "app/common/components/product-pagination.tsx",
+        "app/common/components/ui/pagination.tsx"
+      ],
+      "technical_topics": [
+        "pagination component"
+      ],
+      "architecture_stage": "router pagination UI",
+      "rule_ids": [
+        "UI-002",
+        "RR7-006"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Extracts pagination controls so query navigation remains visible rather than duplicated in local state."
+    },
+    {
+      "number": "025",
+      "hash": "6e09fdf0154eb39176ae358a8a12e75c0881277f",
+      "author_date": "2024-12-05T11:46:46+09:00",
+      "subject": "3.18 All Leaderboards",
+      "changed_paths": [
+        "app/common/components/product-pagination.tsx",
+        "app/features/products/pages/monthly-leaderboard-page.tsx",
+        "app/features/products/pages/weekly-leaderboard-page.tsx",
+        "app/features/products/pages/yearly-leaderboard-page.tsx"
+      ],
+      "technical_topics": [
+        "time-period leaderboards"
+      ],
+      "architecture_stage": "route reuse",
+      "rule_ids": [
+        "RR7-001",
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Adds period-specific route pages around the established leaderboard presentation pattern."
+    },
+    {
+      "number": "026",
+      "hash": "636dabb2b28e4beacee6af94079c0bfbcd0db494",
+      "author_date": "2024-12-05T12:10:12+09:00",
+      "subject": "3.19 MetaArgs",
+      "changed_paths": [
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "app/features/products/pages/monthly-leaderboard-page.tsx",
+        "app/features/products/pages/weekly-leaderboard-page.tsx",
+        "app/features/products/pages/yearly-leaderboard-page.tsx"
+      ],
+      "technical_topics": [
+        "route metadata"
+      ],
+      "architecture_stage": "typed route metadata",
+      "rule_ids": [
+        "RR7-003"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Uses route metadata arguments across date pages to keep page contracts at the adapter boundary."
+    },
+    {
+      "number": "027",
+      "hash": "9b03ecfa6755b71a9b68bd539e66d4307ccbcd9c",
+      "author_date": "2024-12-05T12:35:21+09:00",
+      "subject": "3.20 Search Page",
+      "changed_paths": [
+        "app/common/components/ui/input.tsx",
+        "app/features/products/pages/search-page.tsx"
+      ],
+      "technical_topics": [
+        "search route"
+      ],
+      "architecture_stage": "URL-owned query state",
+      "rule_ids": [
+        "RR7-001",
+        "RR7-006"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds an incomplete fake search page as a temporary routing lesson, not a completed route-owned search implementation."
+    },
+    {
+      "number": "028",
+      "hash": "82d0a50f3537dc8e160fffb2eed2458198af35a2",
+      "author_date": "2024-12-05T12:50:46+09:00",
+      "subject": "3.20 Category Pages",
+      "changed_paths": [
+        "app/features/products/components/category-card.tsx",
+        "app/features/products/pages/categories-page.tsx",
+        "app/features/products/pages/category-page.tsx"
+      ],
+      "technical_topics": [
+        "category route pages"
+      ],
+      "architecture_stage": "product route expansion",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Removes category loaders and loader data in favor of hardcoded category and product values, a temporary non-current lesson."
+    },
+    {
+      "number": "029",
+      "hash": "962b941fe4d610f4c4380e1556b9d5dcfc26a94f",
+      "author_date": "2024-12-05T15:07:01+09:00",
+      "subject": "3.21 Inputs and Selects",
+      "changed_paths": [
+        "app/common/components/input-pair.tsx",
+        "app/common/components/select-pair.tsx",
+        "app/common/components/ui/label.tsx",
+        "app/common/components/ui/select.tsx",
+        "app/common/components/ui/textarea.tsx",
+        "app/features/products/pages/submit-page.tsx",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "form controls"
+      ],
+      "architecture_stage": "input presentation contracts",
+      "rule_ids": [
+        "UI-002",
+        "UI-005"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds shared labelled controls for later form routes without assigning persistence to components."
+    },
+    {
+      "number": "030",
+      "hash": "35c837547e06a72ec7d781cb4c662230d619950c",
+      "author_date": "2024-12-06T08:03:24+09:00",
+      "subject": "3.22 Submit Product Page",
+      "changed_paths": [
+        "app/features/products/pages/submit-page.tsx"
+      ],
+      "technical_topics": [
+        "submit product shell"
+      ],
+      "architecture_stage": "mutation teaching step",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds the submit page before its complete mutation boundary, so it remains a temporary instructional transition."
+    },
+    {
+      "number": "031",
+      "hash": "b1e1c732d124d9cade8667172a648d7d16173d77",
+      "author_date": "2024-12-06T08:54:14+09:00",
+      "subject": "3.23 Promote Product Page",
+      "changed_paths": [
+        "app/common/components/select-pair.tsx",
+        "app/common/components/ui/calendar.tsx",
+        "app/features/products/pages/promote-page.tsx",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "promotion form shell"
+      ],
+      "architecture_stage": "date input UI",
+      "rule_ids": [
+        "UI-002",
+        "UI-005"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Builds promotion input UI before payment or action handling is complete, making it a temporary transition."
+    },
+    {
+      "number": "032",
+      "hash": "b669fde2192fbc54880d24c19dac0d9e8b6bebfe",
+      "author_date": "2024-12-06T09:45:39+09:00",
+      "subject": "3.25 Layout Routes",
+      "changed_paths": [
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/pages/new-product-review-page.tsx",
+        "app/features/products/pages/product-overview-page.tsx",
+        "app/features/products/pages/product-redirect-page.tsx",
+        "app/features/products/pages/product-reviews-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "product layout routes"
+      ],
+      "architecture_stage": "nested route composition",
+      "rule_ids": [
+        "RR7-001",
+        "RR7-002"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Creates nested product routes with fake loaders and an empty action, an incomplete route-protocol lesson."
+    },
+    {
+      "number": "033",
+      "hash": "18cb66db8c93a2d965e5c155f297248d8e0eecf3",
+      "author_date": "2024-12-06T10:16:37+09:00",
+      "subject": "3.26 Product Reviews",
+      "changed_paths": [
+        "app/features/products/components/review-card.tsx",
+        "app/features/products/pages/product-reviews-page.tsx"
+      ],
+      "technical_topics": [
+        "review card"
+      ],
+      "architecture_stage": "product presentation component",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces a review card boundary for product review rendering."
+    },
+    {
+      "number": "034",
+      "hash": "27417ddde3129bedc58c2b7ecd1d7fcff642850f",
+      "author_date": "2024-12-06T11:36:33+09:00",
+      "subject": "3.28 IdeasGPT Pages",
+      "changed_paths": [
+        "app/common/components/ui/dialog.tsx",
+        "app/features/ideas/pages/idea-page.tsx",
+        "app/features/ideas/pages/ideas-page.tsx",
+        "app/features/products/components/create-review-dialog.tsx",
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/pages/new-product-review-page.tsx",
+        "app/features/products/pages/product-reviews-page.tsx",
+        "app/routes.ts",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "idea dialog",
+        "pages"
+      ],
+      "architecture_stage": "cross-feature UI composition",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Extends idea pages and dialog presentation while preserving route-level composition."
+    },
+    {
+      "number": "035",
+      "hash": "f94f2fdad841043e3647ae73a3e40958f972e29b",
+      "author_date": "2024-12-06T12:19:14+09:00",
+      "subject": "3.29 Jobs Page",
+      "changed_paths": [
+        "app/features/jobs/constants.ts",
+        "app/features/jobs/pages/job-page.tsx",
+        "app/features/jobs/pages/jobs-page.tsx",
+        "app/features/jobs/pages/submit-job-page.tsx",
+        "app/features/products/pages/product-overview-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "job route pages"
+      ],
+      "architecture_stage": "feature route expansion",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds job list, detail, and submission presentation routes as separate UI responsibilities."
+    },
+    {
+      "number": "036",
+      "hash": "7f2cd5bf277a2a168860b785771dcf599beaf620",
+      "author_date": "2024-12-06T12:49:47+09:00",
+      "subject": "3.30 Job Detail Page",
+      "changed_paths": [
+        "app/features/jobs/pages/job-page.tsx",
+        "app/features/jobs/pages/jobs-page.tsx"
+      ],
+      "technical_topics": [
+        "job detail page"
+      ],
+      "architecture_stage": "route detail refinement",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Specializes job-detail presentation after the jobs feature UI scaffold is in place."
+    },
+    {
+      "number": "037",
+      "hash": "5a51018eb896c2f36b39e00c99e82067524567bf",
+      "author_date": "2024-12-07T07:44:21+09:00",
+      "subject": "3.32 Post a Job Page",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/features/jobs/constants.ts",
+        "app/features/jobs/pages/submit-job-page.tsx",
+        "app/features/products/components/create-review-dialog.tsx"
+      ],
+      "technical_topics": [
+        "job submission UI"
+      ],
+      "architecture_stage": "mutation teaching shell",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Builds job submission presentation before a completed server mutation is introduced later."
+    },
+    {
+      "number": "038",
+      "hash": "7158f18a009ae1b436100d71c24d37de517e46f6",
+      "author_date": "2024-12-07T11:10:26+09:00",
+      "subject": "3.33 Login and Join Pages",
+      "changed_paths": [
+        "app/features/auth/layouts/auth-layout.tsx",
+        "app/features/auth/pages/join-page.tsx",
+        "app/features/auth/pages/login-page.tsx",
+        "app/features/auth/pages/otp-complete-page.tsx",
+        "app/features/auth/pages/otp-start-page.tsx",
+        "app/features/auth/pages/social-complete-page.tsx",
+        "app/features/auth/pages/social-start-page.tsx",
+        "app/root.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "auth route pages"
+      ],
+      "architecture_stage": "authentication presentation",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Creates the auth route and layout structure that later server auth flows occupy."
+    },
+    {
+      "number": "039",
+      "hash": "8ab2b63fa50e1647fa9b62d39e015d042df1db31",
+      "author_date": "2024-12-07T11:28:14+09:00",
+      "subject": "3.34 OTP Page and Social Buttons",
+      "changed_paths": [
+        "app/features/auth/components/auth-buttons.tsx",
+        "app/features/auth/pages/join-page.tsx",
+        "app/features/auth/pages/login-page.tsx",
+        "app/features/auth/pages/otp-complete-page.tsx",
+        "app/features/auth/pages/otp-start-page.tsx"
+      ],
+      "technical_topics": [
+        "OTP",
+        "social controls"
+      ],
+      "architecture_stage": "auth UI refinement",
+      "rule_ids": [
+        "UI-002"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Adds auth controls and OTP page states ahead of the later authentication action implementation."
+    },
+    {
+      "number": "040",
+      "hash": "967d01690363fc56a83bbd7e5f4a0b09d7872a86",
+      "author_date": "2024-12-09T08:42:06+09:00",
+      "subject": "3.35 Community Page",
+      "changed_paths": [
+        "app/features/community/components/post-card.tsx",
+        "app/features/community/constants.ts",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/pages/submit-post-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "community route pages"
+      ],
+      "architecture_stage": "community feature routes",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces list, detail, and submit community routes as explicit feature adapters."
+    },
+    {
+      "number": "041",
+      "hash": "9d4dddba7049588c82af9c60816a66370c1512e3",
+      "author_date": "2024-12-09T09:21:58+09:00",
+      "subject": "3.36 Post Page",
+      "changed_paths": [
+        "app/common/components/ui/breadcrumb.tsx",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/pages/submit-post-page.tsx"
+      ],
+      "technical_topics": [
+        "post detail UI"
+      ],
+      "architecture_stage": "community detail refinement",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Adds detail-page presentation and breadcrumbs within the community route boundary."
+    },
+    {
+      "number": "042",
+      "hash": "498152a244468d7e086d951b610a0f902ab642de",
+      "author_date": "2024-12-09T10:02:04+09:00",
+      "subject": "3.37 Post Replies",
+      "changed_paths": [
+        "app/features/community/components/reply.tsx",
+        "app/features/community/pages/post-page.tsx"
+      ],
+      "technical_topics": [
+        "reply component"
+      ],
+      "architecture_stage": "community presentation component",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Extracts replies into a presentation component for later query and mutation wiring."
+    },
+    {
+      "number": "043",
+      "hash": "d3b5bed6d9c4788a872e46c239e7eea4aafcda0e",
+      "author_date": "2024-12-09T10:26:36+09:00",
+      "subject": "3.38 Teams Page",
+      "changed_paths": [
+        "app/features/teams/pages/submit-team-page.tsx",
+        "app/features/teams/pages/team-page.tsx",
+        "app/features/teams/pages/teams-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "team route pages"
+      ],
+      "architecture_stage": "team feature routes",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds team list, detail, and submit route shells with distinct page responsibilities."
+    },
+    {
+      "number": "044",
+      "hash": "83d50d6882aba4b600cccbe95c590cccaf75e7a5",
+      "author_date": "2024-12-09T10:53:16+09:00",
+      "subject": "3.39 Team Page",
+      "changed_paths": [
+        "app/features/teams/pages/team-page.tsx"
+      ],
+      "technical_topics": [
+        "team detail UI"
+      ],
+      "architecture_stage": "team detail refinement",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Refines the team detail route after the feature route scaffold is in place."
+    },
+    {
+      "number": "045",
+      "hash": "4984098837a90f8efd0d786b9afa11a322ce80db",
+      "author_date": "2024-12-09T11:45:23+09:00",
+      "subject": "3.40 Edit Profile Page",
+      "changed_paths": [
+        "app/features/community/components/reply.tsx",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/products/pages/submit-product-page.tsx",
+        "app/features/users/pages/dashboard-ideas-page.tsx",
+        "app/features/users/pages/dashboard-page.tsx",
+        "app/features/users/pages/dashboard-product-page.tsx",
+        "app/features/users/pages/message-page.tsx",
+        "app/features/users/pages/messages-page.tsx",
+        "app/features/users/pages/my-profile-page.tsx",
+        "app/features/users/pages/notifications-page.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/features/users/pages/settings-page.tsx",
+        "app/root.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "user dashboard pages"
+      ],
+      "architecture_stage": "user route expansion",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds user route shells with a hardcoded redirect and auth comment, a temporary non-current auth scaffold."
+    },
+    {
+      "number": "046",
+      "hash": "5fb2bab5424dcef0a6927c5cabc428c24b26b3cc",
+      "author_date": "2024-12-09T12:11:23+09:00",
+      "subject": "3.41 Notifications Page",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/features/users/components/notification-card.tsx",
+        "app/features/users/pages/notifications-page.tsx",
+        "app/features/users/pages/settings-page.tsx"
+      ],
+      "technical_topics": [
+        "notifications presentation"
+      ],
+      "architecture_stage": "user feature UI",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces notification display components and route presentation without backend reads yet."
+    },
+    {
+      "number": "047",
+      "hash": "bb0680b82af4c594be4c20ee0a0c90e7f875aa9f",
+      "author_date": "2024-12-09T13:31:20+09:00",
+      "subject": "3.42 Profile Page",
+      "changed_paths": [
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/users/layouts/profile-layout.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/features/users/pages/profile-posts-page.tsx",
+        "app/features/users/pages/profile-products-page.tsx",
+        "app/features/users/pages/settings-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "profile nested layout"
+      ],
+      "architecture_stage": "profile route composition",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Uses a profile layout and child pages to isolate profile navigation and screens."
+    },
+    {
+      "number": "048",
+      "hash": "d6ccb8e966566e83fedf6d6df86951bcbfbecd43",
+      "author_date": "2024-12-10T09:35:54+09:00",
+      "subject": "3.43 Messages Page",
+      "changed_paths": [
+        "app/app.css",
+        "app/common/components/ui/sheet.tsx",
+        "app/common/components/ui/sidebar.tsx",
+        "app/common/components/ui/skeleton.tsx",
+        "app/common/components/ui/tooltip.tsx",
+        "app/features/users/components/message-card.tsx",
+        "app/features/users/layouts/messages-layout.tsx",
+        "app/features/users/pages/messages-page.tsx",
+        "app/hooks/use-mobile.tsx",
+        "app/routes.ts",
+        "package-lock.json",
+        "package.json",
+        "tailwind.config.ts"
+      ],
+      "technical_topics": [
+        "messages layout"
+      ],
+      "architecture_stage": "messaging presentation structure",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Builds the messages layout and cards before live messaging data is connected."
+    },
+    {
+      "number": "049",
+      "hash": "b96442d93af4704f1ee88a78f9c5e1da016e14bd",
+      "author_date": "2024-12-10T10:05:58+09:00",
+      "subject": "3.44 Message Page",
+      "changed_paths": [
+        "app/features/users/components/message-bubble.tsx",
+        "app/features/users/components/message-room-card.tsx",
+        "app/features/users/layouts/messages-layout.tsx",
+        "app/features/users/pages/message-page.tsx"
+      ],
+      "technical_topics": [
+        "message detail UI"
+      ],
+      "architecture_stage": "messaging route refinement",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Adds message-room rendering within the previously separated messaging layout."
+    },
+    {
+      "number": "050",
+      "hash": "95e199ced7bebaae7cc781b4fc52bc146d285263",
+      "author_date": "2024-12-10T10:27:43+09:00",
+      "subject": "3.45 Dashboard Page",
+      "changed_paths": [
+        "app/features/users/layouts/dashboard-layout.tsx",
+        "app/features/users/pages/dashboard-ideas-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "dashboard layout"
+      ],
+      "architecture_stage": "dashboard route composition",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces dashboard navigation and a focused ideas screen structure."
+    },
+    {
+      "number": "051",
+      "hash": "183ed3ad0f6d2c7b2883bf446988022a384cdc89",
+      "author_date": "2024-12-10T11:47:34+09:00",
+      "subject": "3.46 Dashboard Analytics",
+      "changed_paths": [
+        "app/common/components/ui/chart.tsx",
+        "app/features/users/layouts/dashboard-layout.tsx",
+        "app/features/users/pages/dashboard-page.tsx",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "analytics chart UI"
+      ],
+      "architecture_stage": "dashboard presentation",
+      "rule_ids": [
+        "UI-002",
+        "UI-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds chart rendering components before the later database-function data source."
+    },
+    {
+      "number": "052",
+      "hash": "c1167e9c12cffec3d71da7f1fc193780685767d1",
+      "author_date": "2024-12-10T12:04:39+09:00",
+      "subject": "3.47 Product Analytics",
+      "changed_paths": [
+        "app/features/users/pages/dashboard-product-page.tsx"
+      ],
+      "technical_topics": [
+        "product analytics screen"
+      ],
+      "architecture_stage": "dashboard presentation refinement",
+      "rule_ids": [
+        "UI-004"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Adds a product analytics screen to the dashboard presentation layer."
+    },
+    {
+      "number": "053",
+      "hash": "7c262bb44d1f6c058e78d8f6d49e42780b8c885a",
+      "author_date": "2024-12-10T12:20:13+09:00",
+      "subject": "3.48 Responsive Design",
+      "changed_paths": [
+        "app/features/auth/layouts/auth-layout.tsx",
+        "app/features/jobs/pages/jobs-page.tsx",
+        "app/root.tsx"
+      ],
+      "technical_topics": [
+        "responsive layouts"
+      ],
+      "architecture_stage": "responsive product polish",
+      "rule_ids": [
+        "UI-002"
+      ],
+      "classification": "product-polish",
+      "audit_note": "Adjusts layout behavior across auth and jobs views without changing feature data boundaries."
+    },
+    {
+      "number": "054",
+      "hash": "e53a8ab7a2d01e0f4e39e8b17beeeabee41d4e1f",
+      "author_date": "2024-12-10T12:33:49+09:00",
+      "subject": "3.49 Magic UI",
+      "changed_paths": [
+        "app/common/components/ui/flickering-grid.tsx",
+        "app/common/pages/home-page.tsx",
+        "app/features/auth/layouts/auth-layout.tsx",
+        "app/root.tsx",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "visual effects"
+      ],
+      "architecture_stage": "presentation polish",
+      "rule_ids": [
+        "UI-002"
+      ],
+      "classification": "product-polish",
+      "audit_note": "Adds decorative UI effects and styling refinements rather than application responsibilities."
+    },
+    {
+      "number": "055",
+      "hash": "56449d9a2c312ea2964b56dd149de575b7fff546",
+      "author_date": "2024-12-11T11:10:51+09:00",
+      "subject": "4.1 Drizzle Setup",
+      "changed_paths": [
+        "app/db.ts",
+        "drizzle.config.ts",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "Drizzle configuration"
+      ],
+      "architecture_stage": "database tooling foundation",
+      "rule_ids": [
+        "DB-001",
+        "ARCH-004"
+      ],
+      "classification": "foundation",
+      "audit_note": "Introduces the database client and migration tooling required for tracked schema work."
+    },
+    {
+      "number": "056",
+      "hash": "a7e4708fb887cd53bb7bfc979cf7f394392bf6b5",
+      "author_date": "2024-12-11T11:34:54+09:00",
+      "subject": "4.2 Jobs Table",
+      "changed_paths": [
+        "app/features/jobs/schema.ts",
+        "app/migrations/0000_past_jean_grey.sql",
+        "app/migrations/meta/0000_snapshot.json",
+        "app/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "jobs schema migration"
+      ],
+      "architecture_stage": "database schema evolution",
+      "rule_ids": [
+        "DB-001"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds the jobs table through a tracked migration and schema definition."
+    },
+    {
+      "number": "057",
+      "hash": "bce3f5ea4064175bb6e20784307722f5053e4db0",
+      "author_date": "2024-12-11T12:08:29+09:00",
+      "subject": "4.3 Profiles Table",
+      "changed_paths": [
+        "app/features/users/schema.ts",
+        "app/migrations/0001_clever_phalanx.sql",
+        "app/migrations/meta/0001_snapshot.json",
+        "app/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "profiles schema migration"
+      ],
+      "architecture_stage": "database schema evolution",
+      "rule_ids": [
+        "DB-001"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds profiles through the migration history rather than an untracked dashboard change."
+    },
+    {
+      "number": "058",
+      "hash": "c973366e551eb25470fdd0d31a4e2fb72b6299f2",
+      "author_date": "2024-12-12T07:49:13+09:00",
+      "subject": "4.4 Product Tables",
+      "changed_paths": [
+        "app/features/products/schema.ts",
+        "app/features/users/schema.ts",
+        "app/migrations/0002_tiny_naoko.sql",
+        "app/migrations/meta/0002_snapshot.json",
+        "app/migrations/meta/_journal.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "product schema migration"
+      ],
+      "architecture_stage": "database schema evolution",
+      "rule_ids": [
+        "DB-001"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces product tables and their generated schema artifacts together."
+    },
+    {
+      "number": "059",
+      "hash": "ef9fa00bf357d3d40e543da2fce94219dcb31d8e",
+      "author_date": "2024-12-12T08:04:32+09:00",
+      "subject": "4.5 IdeasGPT Tables",
+      "changed_paths": [
+        "app/features/ideas/schema.ts",
+        "app/migrations/0003_parallel_umar.sql",
+        "app/migrations/meta/0003_snapshot.json",
+        "app/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "ideas schema migration"
+      ],
+      "architecture_stage": "database schema evolution",
+      "rule_ids": [
+        "DB-001"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds IdeasGPT persistence with an ordered migration and feature schema."
+    },
+    {
+      "number": "060",
+      "hash": "2e903f115189ff6bfa3eab9411b2926e7896176c",
+      "author_date": "2024-12-12T08:21:16+09:00",
+      "subject": "4.6 Community Tables",
+      "changed_paths": [
+        "app/features/community/schema.ts",
+        "app/migrations/0004_fuzzy_crystal.sql",
+        "app/migrations/meta/0004_snapshot.json",
+        "app/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "community schema migration"
+      ],
+      "architecture_stage": "database schema evolution",
+      "rule_ids": [
+        "DB-001"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Creates community tables under migration control for the feature routes."
+    },
+    {
+      "number": "061",
+      "hash": "65282d0da5dbb3575475fcdbdb1997ec20b90e3b",
+      "author_date": "2024-12-12T08:38:58+09:00",
+      "subject": "4.7 Team Table",
+      "changed_paths": [
+        "app/features/teams/constants.ts",
+        "app/features/teams/pages/submit-team-page.tsx",
+        "app/features/teams/schema.ts",
+        "app/migrations/0005_tricky_maria_hill.sql",
+        "app/migrations/0006_swift_mantis.sql",
+        "app/migrations/meta/0005_snapshot.json",
+        "app/migrations/meta/0006_snapshot.json",
+        "app/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "team schema migration"
+      ],
+      "architecture_stage": "database schema refinement",
+      "rule_ids": [
+        "DB-001"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Extends the team schema through sequential migrations and matching feature types."
+    },
+    {
+      "number": "062",
+      "hash": "4b71a893316ec9f3bd451f5455956259933970fb",
+      "author_date": "2024-12-12T09:12:26+09:00",
+      "subject": "4.8 Messages Table",
+      "changed_paths": [
+        "app/features/users/schema.ts",
+        "app/migrations/0007_condemned_arclight.sql",
+        "app/migrations/meta/0007_snapshot.json",
+        "app/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "messages schema migration"
+      ],
+      "architecture_stage": "database schema evolution",
+      "rule_ids": [
+        "DB-001"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces message storage with committed migration metadata."
+    },
+    {
+      "number": "063",
+      "hash": "9d47cced558de6ee96e170aef703dc94e9967cb6",
+      "author_date": "2024-12-12T09:55:00+09:00",
+      "subject": "4.9 User Profile Trigger",
+      "changed_paths": [
+        "app/sql/migrations/0000_past_jean_grey.sql",
+        "app/sql/migrations/0001_clever_phalanx.sql",
+        "app/sql/migrations/0002_tiny_naoko.sql",
+        "app/sql/migrations/0003_parallel_umar.sql",
+        "app/sql/migrations/0004_fuzzy_crystal.sql",
+        "app/sql/migrations/0005_tricky_maria_hill.sql",
+        "app/sql/migrations/0006_swift_mantis.sql",
+        "app/sql/migrations/0007_condemned_arclight.sql",
+        "app/sql/migrations/meta/0000_snapshot.json",
+        "app/sql/migrations/meta/0001_snapshot.json",
+        "app/sql/migrations/meta/0002_snapshot.json",
+        "app/sql/migrations/meta/0003_snapshot.json",
+        "app/sql/migrations/meta/0004_snapshot.json",
+        "app/sql/migrations/meta/0005_snapshot.json",
+        "app/sql/migrations/meta/0006_snapshot.json",
+        "app/sql/migrations/meta/0007_snapshot.json",
+        "app/sql/migrations/meta/_journal.json",
+        "app/sql/triggers/user_to_profile_trigger.sql",
+        "drizzle.config.ts"
+      ],
+      "technical_topics": [
+        "profile trigger migration"
+      ],
+      "architecture_stage": "database trigger setup",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SEC-002"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds standalone profile-trigger SQL without migration, privilege, or function-security evidence, a legacy database risk rather than a deployment pattern."
+    },
+    {
+      "number": "064",
+      "hash": "a10d0997ed548793ea13a9591fde5d194d919785",
+      "author_date": "2024-12-12T10:52:45+09:00",
+      "subject": "4.10 Seed",
+      "changed_paths": [
+        "app/sql/seed.sql"
+      ],
+      "technical_topics": [
+        "database seed"
+      ],
+      "architecture_stage": "local data setup",
+      "rule_ids": [
+        "ARCH-004"
+      ],
+      "classification": "foundation",
+      "audit_note": "Provides tracked local seed data to exercise the developing schema without claiming a schema migration."
+    },
+    {
+      "number": "065",
+      "hash": "d9d9cadd3c9ebd765834da102f5bc7cda954cd40",
+      "author_date": "2024-12-12T11:46:35+09:00",
+      "subject": "5.1 Using DrizzleORM",
+      "changed_paths": [
+        "app/db.ts",
+        "app/features/community/components/post-card.tsx",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/queries.ts"
+      ],
+      "technical_topics": [
+        "Drizzle community queries"
+      ],
+      "architecture_stage": "query and UI coupling",
+      "rule_ids": [
+        "SUPA-003",
+        "UI-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Connects a first query layer to pages but remains a temporary course transition before the Supabase adapter switch."
+    },
+    {
+      "number": "066",
+      "hash": "594f62ec2d6c14387a689027be8f5b5bf0f67338",
+      "author_date": "2024-12-12T12:56:06+09:00",
+      "subject": "5.2 Supabase Client Setup",
+      "changed_paths": [
+        "app/features/community/components/post-card.tsx",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/queries.ts",
+        "app/supa-client.ts",
+        "database.types.ts",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "Supabase client",
+        "types"
+      ],
+      "architecture_stage": "infrastructure client introduction",
+      "rule_ids": [
+        "SUPA-001",
+        "SUPA-004",
+        "SUPA-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Introduces a module-level typed Supabase client without cookie or browser-server separation, a temporary client lesson corrected by request-scoped SSR handling later."
+    },
+    {
+      "number": "067",
+      "hash": "67d3b45a935dc1b3f92aa96117f0cd24f6462ab7",
+      "author_date": "2024-12-13T08:25:34+09:00",
+      "subject": "5.4 Supabase Views",
+      "changed_paths": [
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/queries.ts",
+        "app/sql/views/community-post-list-view.sql",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "Supabase view"
+      ],
+      "architecture_stage": "read-model infrastructure",
+      "rule_ids": [
+        "DB-001",
+        "DB-004",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds a standalone view without migration tracking or security_invoker evidence, so its typed read model is legacy-risk context rather than current guidance."
+    },
+    {
+      "number": "068",
+      "hash": "9068f40f7ee0a98066e2ea08acd661536cb2d0f0",
+      "author_date": "2024-12-13T08:59:28+09:00",
+      "subject": "5.5 Type Fest",
+      "changed_paths": [
+        "app/features/community/pages/community-page.tsx",
+        "app/supa-client.ts",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "TypeScript utility types"
+      ],
+      "architecture_stage": "typed client refinement",
+      "rule_ids": [
+        "SUPA-004",
+        "TS-002"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Refines typed query utilities but still depends on the singleton client, so it is a temporary pre-SSR pattern rather than current client guidance."
+    },
+    {
+      "number": "069",
+      "hash": "49eb5d6dfd234c05dd041875f0036ebe95877a45",
+      "author_date": "2024-12-13T09:57:12+09:00",
+      "subject": "5.6 Counter Triggers",
+      "changed_paths": [
+        "app/features/community/schema.ts",
+        "app/sql/migrations/0008_modern_cannonball.sql",
+        "app/sql/migrations/meta/0008_snapshot.json",
+        "app/sql/migrations/meta/_journal.json",
+        "app/sql/triggers/post-upvote-trigger.sql"
+      ],
+      "technical_topics": [
+        "counter trigger"
+      ],
+      "architecture_stage": "database event automation",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SEC-002"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds standalone vote-counter trigger SQL while its migration only adds a column, leaving migration and function-security risk explicit."
+    },
+    {
+      "number": "070",
+      "hash": "cc8309573fa3c202fefeacede5f54019f65f9caa",
+      "author_date": "2024-12-13T10:37:06+09:00",
+      "subject": "5.7 SSR",
+      "changed_paths": [
+        "app/features/community/pages/community-page.tsx",
+        "app/root.tsx"
+      ],
+      "technical_topics": [
+        "server rendering"
+      ],
+      "architecture_stage": "server route read",
+      "rule_ids": [
+        "RR7-001"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Introduces a deliberate ten-second loader delay for the lesson, a temporary experiment that is not recommended server rendering behavior."
+    },
+    {
+      "number": "071",
+      "hash": "874adeb6b1dc31c78d4654569abc003d3dc3937e",
+      "author_date": "2024-12-13T11:06:32+09:00",
+      "subject": "5.8 Suspense and Await",
+      "changed_paths": [
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/queries.ts"
+      ],
+      "technical_topics": [
+        "Suspense",
+        "Await"
+      ],
+      "architecture_stage": "deferred loader UI",
+      "rule_ids": [
+        "RR7-001",
+        "ERR-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Pairs temporary delayed loader data with Suspense and Await for an instructional experiment removed by later history, not a current recommendation."
+    },
+    {
+      "number": "072",
+      "hash": "5a98ef76c289ac8fc8052d9f2454d53e9c3baaab",
+      "author_date": "2024-12-13T12:11:03+09:00",
+      "subject": "5.10 clientLoader",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/queries.ts"
+      ],
+      "technical_topics": [
+        "clientLoader transition"
+      ],
+      "architecture_stage": "client loader experiment",
+      "rule_ids": [
+        "RR7-001",
+        "RR7-006"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds an empty analytics clientLoader and removes deferred rendering, a temporary teaching transition not a current recommendation."
+    },
+    {
+      "number": "073",
+      "hash": "99c13b765eadc78ef6a8a0a84703a739d7a8eef3",
+      "author_date": "2024-12-16T09:13:47+09:00",
+      "subject": "6.0 Product Leaderboards",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/products/components/product-card.tsx",
+        "app/features/products/pages/leaderboard-page.tsx",
+        "app/features/products/queries.ts",
+        "app/features/products/schema.ts",
+        "app/sql/migrations/0009_medical_silver_samurai.sql",
+        "app/sql/migrations/meta/0009_snapshot.json",
+        "app/sql/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "leaderboard query",
+        "schema"
+      ],
+      "architecture_stage": "product read-model evolution",
+      "rule_ids": [
+        "DB-001",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds typed leaderboard queries while they still depend on the singleton client, a temporary pre-SSR data pattern."
+    },
+    {
+      "number": "074",
+      "hash": "ff8637b9108b64b3b14aa79608fed78199e961d8",
+      "author_date": "2024-12-16T10:11:02+09:00",
+      "subject": "6.1 Product Pagination",
+      "changed_paths": [
+        "app/common/components/product-pagination.tsx",
+        "app/features/products/contants.ts",
+        "app/features/products/layouts/leaderboard-layout.tsx",
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "app/features/products/pages/monthly-leaderboard-page.tsx",
+        "app/features/products/pages/weekly-leaderboard-page.tsx",
+        "app/features/products/pages/yearly-leaderboard-page.tsx",
+        "app/features/products/queries.ts",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "pagination queries"
+      ],
+      "architecture_stage": "URL pagination refinement",
+      "rule_ids": [
+        "RR7-001",
+        "RR7-006",
+        "SUPA-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Preserves route-owned pagination but the reads still use the singleton client, a temporary pre-SSR implementation caveat."
+    },
+    {
+      "number": "075",
+      "hash": "1583d3724b064506fb7fc7e8e5b31acaf7b642cb",
+      "author_date": "2024-12-16T11:07:28+09:00",
+      "subject": "6.2 Community Posts",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/queries.ts",
+        "app/sql/views/community-post-list-view.sql",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "community post reads"
+      ],
+      "architecture_stage": "community query refinement",
+      "rule_ids": [
+        "RR7-001",
+        "DB-004",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Expands typed reads over a standalone community view lacking migration and security_invoker evidence, preserving a legacy-risk caveat."
+    },
+    {
+      "number": "076",
+      "hash": "e99756efc2f07a75f53f0a82f495445f3db740c9",
+      "author_date": "2024-12-16T11:40:04+09:00",
+      "subject": "6.3 IdeasGPT Pages",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/ideas/components/idea-card.tsx",
+        "app/features/ideas/pages/idea-page.tsx",
+        "app/features/ideas/pages/ideas-page.tsx",
+        "app/features/ideas/queries.ts",
+        "app/sql/views/gpt_ideas_view.sql",
+        "app/supa-client.ts",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "ideas query reads"
+      ],
+      "architecture_stage": "ideas query refinement",
+      "rule_ids": [
+        "RR7-001",
+        "DB-004",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds typed idea reads over a standalone view without migration tracking or security_invoker evidence, making the pattern legacy-risk context."
+    },
+    {
+      "number": "077",
+      "hash": "07e624b8cb621e85afb580a98eb48cd1644fc6cd",
+      "author_date": "2024-12-16T12:06:29+09:00",
+      "subject": "6.4 Jobs Pages",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/jobs/components/job-card.tsx",
+        "app/features/jobs/pages/jobs-page.tsx",
+        "app/features/jobs/queries.ts"
+      ],
+      "technical_topics": [
+        "jobs query reads"
+      ],
+      "architecture_stage": "jobs feature data layer",
+      "rule_ids": [
+        "RR7-001",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Introduces typed jobs queries, but their singleton client dependency makes this a temporary pre-SSR pattern."
+    },
+    {
+      "number": "078",
+      "hash": "af1012267d557a28857373de9c3a028d55669f49",
+      "author_date": "2024-12-18T08:47:00+09:00",
+      "subject": "6.5 Team Pages",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/teams/components/team-card.tsx",
+        "app/features/teams/pages/teams-page.tsx",
+        "app/features/teams/queries.ts",
+        "app/features/teams/schema.ts",
+        "app/sql/migrations/0010_eminent_cardiac.sql",
+        "app/sql/migrations/0011_last_paladin.sql",
+        "app/sql/migrations/meta/0010_snapshot.json",
+        "app/sql/migrations/meta/0011_snapshot.json",
+        "app/sql/migrations/meta/_journal.json",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "teams query",
+        "migrations"
+      ],
+      "architecture_stage": "teams feature data layer",
+      "rule_ids": [
+        "DB-001",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds team schema and typed queries, but the singleton client makes the read path a temporary pre-SSR pattern."
+    },
+    {
+      "number": "079",
+      "hash": "8f9d902ca3ffc1d07896eeec8c01a675bac877af",
+      "author_date": "2024-12-18T09:09:13+09:00",
+      "subject": "6.6 Categories Pages",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/products/components/category-card.tsx",
+        "app/features/products/components/product-card.tsx",
+        "app/features/products/pages/categories-page.tsx",
+        "app/features/products/pages/category-page.tsx",
+        "app/features/products/queries.ts"
+      ],
+      "technical_topics": [
+        "category query reads"
+      ],
+      "architecture_stage": "product feature data layer",
+      "rule_ids": [
+        "RR7-001",
+        "SUPA-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Wires category routes to typed helpers while retaining the singleton client, a temporary pre-SSR caveat."
+    },
+    {
+      "number": "080",
+      "hash": "346d65b545db3028bc0a31a7b897ce6a215341e2",
+      "author_date": "2024-12-18T09:49:33+09:00",
+      "subject": "6.7 Product Search",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/products/pages/category-page.tsx",
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "app/features/products/pages/leaderboard-page.tsx",
+        "app/features/products/pages/monthly-leaderboard-page.tsx",
+        "app/features/products/pages/search-page.tsx",
+        "app/features/products/pages/weekly-leaderboard-page.tsx",
+        "app/features/products/pages/yearly-leaderboard-page.tsx",
+        "app/features/products/queries.ts"
+      ],
+      "technical_topics": [
+        "search query reads"
+      ],
+      "architecture_stage": "URL search data flow",
+      "rule_ids": [
+        "RR7-001",
+        "RR7-006",
+        "SUPA-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Keeps search criteria route-owned but executes reads through the singleton client, a temporary pre-SSR pattern."
+    },
+    {
+      "number": "081",
+      "hash": "dbfce139c179e76170a42a2a6bef56ce38f3da52",
+      "author_date": "2024-12-18T11:07:43+09:00",
+      "subject": "6.8 Product Overview",
+      "changed_paths": [
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/pages/product-overview-page.tsx",
+        "app/features/products/queries.ts",
+        "app/sql/views/product-overview-view.sql",
+        "app/supa-client.ts",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "product overview view"
+      ],
+      "architecture_stage": "product read model",
+      "rule_ids": [
+        "DB-001",
+        "DB-004",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Uses a standalone product view with unresolved SQL syntax and no security_invoker evidence, so the query is legacy-risk rather than a current read-model pattern."
+    },
+    {
+      "number": "082",
+      "hash": "6ce79469af1a0cf8d54bde95295392fbb9a65326",
+      "author_date": "2024-12-18T12:22:23+09:00",
+      "subject": "6.9 Product Reviews",
+      "changed_paths": [
+        "app/features/products/components/review-card.tsx",
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/pages/product-reviews-page.tsx",
+        "app/features/products/queries.ts"
+      ],
+      "technical_topics": [
+        "product review queries"
+      ],
+      "architecture_stage": "product read refinement",
+      "rule_ids": [
+        "RR7-001",
+        "SUPA-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds review read helpers that still rely on the singleton client, a temporary pre-SSR pattern."
+    },
+    {
+      "number": "083",
+      "hash": "29f015dfdea083bcc9971a49662f34b945817df0",
+      "author_date": "2024-12-18T13:51:04+09:00",
+      "subject": "6.10 Post Page",
+      "changed_paths": [
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/queries.ts",
+        "app/features/jobs/pages/job-page.tsx",
+        "app/features/jobs/queries.ts",
+        "app/features/teams/pages/team-page.tsx",
+        "app/features/teams/queries.ts",
+        "app/sql/views/community-post-detail.sql",
+        "app/supa-client.ts",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "detail view queries"
+      ],
+      "architecture_stage": "feature detail read models",
+      "rule_ids": [
+        "DB-001",
+        "DB-004",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Extends detail queries over standalone views lacking migration and security_invoker evidence, which is legacy-risk rather than secure view guidance."
+    },
+    {
+      "number": "084",
+      "hash": "0a92d35e92fd26fd1fe7b18f98b43d06623ce2d5",
+      "author_date": "2024-12-19T08:33:47+09:00",
+      "subject": "6.11 Post Replies",
+      "changed_paths": [
+        "app/features/community/components/reply.tsx",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/queries.ts",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "reply reads"
+      ],
+      "architecture_stage": "community reply data layer",
+      "rule_ids": [
+        "RR7-001",
+        "SUPA-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds reply query data while retaining the singleton client, a temporary pre-SSR pattern rather than current client guidance."
+    },
+    {
+      "number": "085",
+      "hash": "fe3deaa6b66abb9c273c0e93d6bfcae37e8e3909",
+      "author_date": "2024-12-19T09:33:31+09:00",
+      "subject": "6.12 User Profile",
+      "changed_paths": [
+        "app/features/products/queries.ts",
+        "app/features/products/schema.ts",
+        "app/features/users/layouts/profile-layout.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/features/users/pages/profile-products-page.tsx",
+        "app/features/users/queries.ts",
+        "app/routes.ts",
+        "app/sql/migrations/0012_goofy_vulcan.sql",
+        "app/sql/migrations/meta/0012_snapshot.json",
+        "app/sql/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "profile read queries"
+      ],
+      "architecture_stage": "profile data layer",
+      "rule_ids": [
+        "RR7-001",
+        "SUPA-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Connects profile query helpers but keeps the singleton client dependency, a temporary pre-SSR pattern."
+    },
+    {
+      "number": "086",
+      "hash": "ecc7b6f7a43ebf18231318c13eead1b17fbbbbfa",
+      "author_date": "2024-12-19T09:44:12+09:00",
+      "subject": "6.13 Users Posts",
+      "changed_paths": [
+        "app/features/users/layouts/profile-layout.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/features/users/pages/profile-posts-page.tsx",
+        "app/features/users/queries.ts"
+      ],
+      "technical_topics": [
+        "user-post reads"
+      ],
+      "architecture_stage": "profile data refinement",
+      "rule_ids": [
+        "RR7-001",
+        "SUPA-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds user-post query data through the singleton client, a temporary pre-SSR pattern."
+    },
+    {
+      "number": "087",
+      "hash": "4e5a4462194077b46c9b57407a1eb495e6956085",
+      "author_date": "2024-12-19T11:44:21+09:00",
+      "subject": "6.14 RCP Calls",
+      "changed_paths": [
+        "app/features/analytics/schema.ts",
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/pages/product-overview-page.tsx",
+        "app/features/products/pages/product-visit-page.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/routes.ts",
+        "app/sql/functions/track_event.sql",
+        "app/sql/migrations/0013_busy_trish_tilby.sql",
+        "app/sql/migrations/meta/0013_snapshot.json",
+        "app/sql/migrations/meta/_journal.json",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "database RPC analytics"
+      ],
+      "architecture_stage": "database-function read model",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Introduces standalone database functions without migration, safe search_path, or grant handling, a legacy-risk RPC lesson rather than a function-security pattern."
+    },
+    {
+      "number": "088",
+      "hash": "0acd28f36d82fb9542f36bf577873e759d77ec8a",
+      "author_date": "2024-12-20T10:26:54+09:00",
+      "subject": "7.2 Server Side Client",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/queries.ts",
+        "app/features/ideas/pages/idea-page.tsx",
+        "app/features/ideas/pages/ideas-page.tsx",
+        "app/features/ideas/queries.ts",
+        "app/features/jobs/pages/job-page.tsx",
+        "app/features/jobs/pages/jobs-page.tsx",
+        "app/features/jobs/queries.ts",
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/pages/categories-page.tsx",
+        "app/features/products/pages/category-page.tsx",
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "app/features/products/pages/leaderboard-page.tsx",
+        "app/features/products/pages/monthly-leaderboard-page.tsx",
+        "app/features/products/pages/product-overview-page.tsx",
+        "app/features/products/pages/product-reviews-page.tsx",
+        "app/features/products/pages/product-visit-page.tsx",
+        "app/features/products/pages/search-page.tsx",
+        "app/features/products/pages/submit-product-page.tsx",
+        "app/features/products/pages/weekly-leaderboard-page.tsx",
+        "app/features/products/pages/yearly-leaderboard-page.tsx",
+        "app/features/products/queries.ts",
+        "app/features/teams/pages/team-page.tsx",
+        "app/features/teams/pages/teams-page.tsx",
+        "app/features/teams/queries.ts",
+        "app/features/users/layouts/profile-layout.tsx",
+        "app/features/users/pages/dashboard-ideas-page.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/features/users/pages/profile-posts-page.tsx",
+        "app/features/users/pages/profile-products-page.tsx",
+        "app/features/users/queries.ts",
+        "app/supa-client.ts",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "SSR Supabase client"
+      ],
+      "architecture_stage": "server client separation",
+      "rule_ids": [
+        "SUPA-001",
+        "TS-003"
+      ],
+      "classification": "correction",
+      "audit_note": "Corrects the singleton-client chain by passing a request-scoped SSR client from loaders into queries."
+    },
+    {
+      "number": "089",
+      "hash": "b4025d60d9e1859b5f6b0278846e4c73b0c282a6",
+      "author_date": "2024-12-20T12:59:12+09:00",
+      "subject": "7.3 Action Function",
+      "changed_paths": [
+        "app/features/auth/pages/login-page.tsx",
+        "app/root.tsx"
+      ],
+      "technical_topics": [
+        "login action"
+      ],
+      "architecture_stage": "auth mutation boundary",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Uses a deliberate delay, raw FormData, fake error branch, and no Zod parsing, a temporary login lesson corrected by the later auth flow."
+    },
+    {
+      "number": "090",
+      "hash": "0eff204384cfa735eaa3325b6b5b94230301e9af",
+      "author_date": "2024-12-23T09:52:35+09:00",
+      "subject": "7.5 Sign Up",
+      "changed_paths": [
+        "app/features/auth/pages/join-page.tsx",
+        "app/features/auth/pages/login-page.tsx",
+        "app/features/auth/pages/logout-page.tsx",
+        "app/features/auth/queries.ts",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "signup",
+        "logout actions"
+      ],
+      "architecture_stage": "auth mutation flows",
+      "rule_ids": [
+        "RR7-002",
+        "RR7-004",
+        "ZOD-001"
+      ],
+      "classification": "correction",
+      "audit_note": "Replaces the earlier raw login lesson with validated auth action flows, refining the server mutation boundary."
+    },
+    {
+      "number": "091",
+      "hash": "f901fb09c065d2058afdaa3877d51fb21e54705e",
+      "author_date": "2024-12-23T10:31:57+09:00",
+      "subject": "7.6 Triggers and Navigation",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/features/users/pages/my-profile-page.tsx",
+        "app/features/users/queries.ts",
+        "app/root.tsx",
+        "app/sql/triggers/user_to_profile_trigger.sql"
+      ],
+      "technical_topics": [
+        "profile trigger navigation"
+      ],
+      "architecture_stage": "auth side-effect refinement",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SEC-002"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Combines navigation with standalone profile-trigger SQL that lacks migration and function-security evidence, so the trigger aspect remains legacy risk."
+    },
+    {
+      "number": "092",
+      "hash": "b606a01cb4bfe312a2490ea3bb71138af351f6f2",
+      "author_date": "2024-12-23T12:41:12+09:00",
+      "subject": "7.7 Social Login",
+      "changed_paths": [
+        "app/features/auth/pages/social-complete-page.tsx",
+        "app/features/auth/pages/social-start-page.tsx",
+        "app/supa-client.ts"
+      ],
+      "technical_topics": [
+        "social auth flow"
+      ],
+      "architecture_stage": "OAuth route behavior",
+      "rule_ids": [
+        "RR7-004",
+        "SUPA-001"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds an OAuth loader flow around the Supabase client boundary without claiming action or Form semantics."
+    },
+    {
+      "number": "093",
+      "hash": "902cb9bc8a9ddf9e48b44b030038fa5fb4d79340",
+      "author_date": "2024-12-23T12:57:07+09:00",
+      "subject": "7.8 Social Login Triggers",
+      "changed_paths": [
+        "app/sql/triggers/user_to_profile_trigger.sql"
+      ],
+      "technical_topics": [
+        "social profile trigger"
+      ],
+      "architecture_stage": "database auth automation",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SEC-002"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Extends standalone social-profile trigger SQL without migration, privilege, or function-security evidence, a legacy database risk."
+    },
+    {
+      "number": "094",
+      "hash": "f6184864ea1598b57397fe0df3386aa98c852d0b",
+      "author_date": "2024-12-24T08:37:15+09:00",
+      "subject": "7.9 OTP Login",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/features/auth/pages/otp-complete-page.tsx",
+        "app/features/auth/pages/otp-start-page.tsx"
+      ],
+      "technical_topics": [
+        "OTP login"
+      ],
+      "architecture_stage": "passwordless auth flow",
+      "rule_ids": [
+        "RR7-002",
+        "RR7-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Introduces OTP route states and server-auth flow for passwordless login."
+    },
+    {
+      "number": "095",
+      "hash": "b5b1a7227a4b2bdfec42919080d8cacd48f1dfe2",
+      "author_date": "2024-12-24T10:04:02+09:00",
+      "subject": "7.10 SMS Login",
+      "changed_paths": [
+        "app/features/auth/pages/otp-complete-page.tsx",
+        "app/features/auth/pages/otp-start-page.tsx",
+        "app/sql/triggers/user_to_profile_trigger.sql"
+      ],
+      "technical_topics": [
+        "SMS login"
+      ],
+      "architecture_stage": "OTP channel refinement",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SEC-002"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Extends OTP UI alongside standalone profile-trigger SQL that remains unmigrated and unchecked for function security, a legacy risk."
+    },
+    {
+      "number": "096",
+      "hash": "a30964afb5ada4dd72adf63f218754174e22531b",
+      "author_date": "2024-12-24T11:24:37+09:00",
+      "subject": "8.0 Create Post Page",
+      "changed_paths": [
+        "app/features/community/mutations.ts",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/pages/submit-post-page.tsx",
+        "app/features/community/schema.ts",
+        "app/features/users/queries.ts"
+      ],
+      "technical_topics": [
+        "post creation mutation"
+      ],
+      "architecture_stage": "community write flow",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "SEC-002"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds a community mutation module and submit route for a server-mediated post write."
+    },
+    {
+      "number": "097",
+      "hash": "2127750f0593a9203673bae00a14070527d39633",
+      "author_date": "2024-12-24T11:57:07+09:00",
+      "subject": "8.1 Submit Job Page",
+      "changed_paths": [
+        "app/features/jobs/mutations.ts",
+        "app/features/jobs/pages/job-page.tsx",
+        "app/features/jobs/pages/submit-job-page.tsx"
+      ],
+      "technical_topics": [
+        "job creation mutation"
+      ],
+      "architecture_stage": "jobs write flow",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "SEC-002"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds a job submission mutation behind the feature route form."
+    },
+    {
+      "number": "098",
+      "hash": "0946b9ee80a314ef5ae8a21e9cf0a34b92ec8e50",
+      "author_date": "2024-12-24T12:17:09+09:00",
+      "subject": "8.2 Create Team Page",
+      "changed_paths": [
+        "app/features/teams/mutations.ts",
+        "app/features/teams/pages/submit-team-page.tsx"
+      ],
+      "technical_topics": [
+        "team creation mutation"
+      ],
+      "architecture_stage": "teams write flow",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "SEC-002"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds the team write operation and ties it to the submit route."
+    },
+    {
+      "number": "099",
+      "hash": "5034ee6cd1700da4fe979f936c69acf284f4fb91",
+      "author_date": "2024-12-30T09:13:22+09:00",
+      "subject": "8.3 Post Replies part One",
+      "changed_paths": [
+        "app/features/community/mutations.ts",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/queries.ts",
+        "app/root.tsx"
+      ],
+      "technical_topics": [
+        "reply mutation transition"
+      ],
+      "architecture_stage": "reply write flow",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Introduces the first reply mutation increment before its complete UI interaction is finished in a later commit."
+    },
+    {
+      "number": "100",
+      "hash": "9821875b81b37db6b0793371cec6891ad0ced095",
+      "author_date": "2024-12-30T10:11:36+09:00",
+      "subject": "8.4 Post Replies part Two",
+      "changed_paths": [
+        "app/features/auth/pages/social-complete-page.tsx",
+        "app/features/community/components/reply.tsx",
+        "app/features/community/mutations.ts",
+        "app/features/community/pages/post-page.tsx"
+      ],
+      "technical_topics": [
+        "reply submission completion"
+      ],
+      "architecture_stage": "reply write refinement",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "UI-005"
+      ],
+      "classification": "correction",
+      "audit_note": "Completes the reply interaction left incomplete by the prior instructional mutation step."
+    },
+    {
+      "number": "101",
+      "hash": "aed8708394fdc7269499ab7883d57b376e57cedd",
+      "author_date": "2024-12-30T11:01:28+09:00",
+      "subject": "8.5 Claimed Ideas",
+      "changed_paths": [
+        "app/features/ideas/components/idea-card.tsx",
+        "app/features/ideas/mutations.ts",
+        "app/features/ideas/pages/idea-page.tsx",
+        "app/features/ideas/queries.ts",
+        "app/features/users/pages/dashboard-ideas-page.tsx",
+        "app/sql/views/gpt_ideas_view.sql"
+      ],
+      "technical_topics": [
+        "claimed-idea mutation"
+      ],
+      "architecture_stage": "ideas write flow",
+      "rule_ids": [
+        "RR7-002",
+        "DB-001",
+        "DB-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds a claimed-idea action over a standalone view without migration or security_invoker evidence, retaining an explicit legacy-risk caveat."
+    },
+    {
+      "number": "102",
+      "hash": "88b0bc0324fa4b6a6c5f9e7ad530311759fd75ae",
+      "author_date": "2024-12-30T12:56:18+09:00",
+      "subject": "8.6 Create Review",
+      "changed_paths": [
+        "app/features/products/components/create-review-dialog.tsx",
+        "app/features/products/mutations.ts",
+        "app/features/products/pages/product-reviews-page.tsx",
+        "app/features/products/queries.ts",
+        "app/features/products/schema.ts"
+      ],
+      "technical_topics": [
+        "review creation mutation"
+      ],
+      "architecture_stage": "product write flow",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "SEC-002"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds a review mutation behind the product review dialog and route."
+    },
+    {
+      "number": "103",
+      "hash": "d810dfe7153af1fec9a11fdeedac85a11036ce12",
+      "author_date": "2024-12-30T14:03:35+09:00",
+      "subject": "8.7 Dashboard Chart",
+      "changed_paths": [
+        "app/features/users/layouts/dashboard-layout.tsx",
+        "app/features/users/pages/dashboard-page.tsx",
+        "app/features/users/queries.ts",
+        "app/sql/functions/get_dashboard_stats.sql",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "dashboard stats RPC"
+      ],
+      "architecture_stage": "analytics read model",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Introduces a standalone dashboard function without migration, safe search_path, or grant handling, so it is legacy-risk evidence."
+    },
+    {
+      "number": "104",
+      "hash": "d99414c7984e5aa992402c351acf9b118eea2449",
+      "author_date": "2024-12-30T14:38:53+09:00",
+      "subject": "8.8 Product Analytics Chart",
+      "changed_paths": [
+        "app/features/products/contants.ts",
+        "app/features/users/layouts/dashboard-layout.tsx",
+        "app/features/users/pages/dashboard-product-page.tsx",
+        "app/sql/functions/get_product_stats.sql",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "product stats RPC"
+      ],
+      "architecture_stage": "analytics read refinement",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds a standalone product analytics function without migration, safe search_path, or grant handling, a legacy-risk extension."
+    },
+    {
+      "number": "105",
+      "hash": "81d6b1c720129cdbf5209f30c8016c7928c5314f",
+      "author_date": "2024-12-31T09:15:21+09:00",
+      "subject": "8.9 Edit Profile",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/common/components/select-pair.tsx",
+        "app/common/components/ui/alert.tsx",
+        "app/features/users/layouts/profile-layout.tsx",
+        "app/features/users/mutations.ts",
+        "app/features/users/pages/settings-page.tsx",
+        "app/features/users/queries.ts"
+      ],
+      "technical_topics": [
+        "profile mutation"
+      ],
+      "architecture_stage": "settings write flow",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "SEC-002"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds settings mutation handling and refreshes the profile presentation around it."
+    },
+    {
+      "number": "106",
+      "hash": "7adb25890936435f81dc21f15a41a004b99fe155",
+      "author_date": "2024-12-31T10:08:30+09:00",
+      "subject": "8.10 File Uploads",
+      "changed_paths": [
+        "app/features/users/mutations.ts",
+        "app/features/users/pages/settings-page.tsx"
+      ],
+      "technical_topics": [
+        "file upload mutation"
+      ],
+      "architecture_stage": "external storage write",
+      "rule_ids": [
+        "RR7-002",
+        "SEC-002"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds avatar upload behavior through the user mutation boundary."
+    },
+    {
+      "number": "107",
+      "hash": "0a47c0a69e9e0d9cfead7483145f56c1ea4c0e02",
+      "author_date": "2024-12-31T11:55:45+09:00",
+      "subject": "8.11 Row Level Security",
+      "changed_paths": [
+        "app/features/users/pages/settings-page.tsx"
+      ],
+      "technical_topics": [
+        "RLS lesson"
+      ],
+      "architecture_stage": "authorization teaching transition",
+      "rule_ids": [
+        "SEC-002",
+        "DB-002"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Shows a settings-page RLS step without policy files here, so it is incomplete evidence and not a current authorization recommendation."
+    },
+    {
+      "number": "108",
+      "hash": "6578b21eae4a4a20c2a5c6e17cc09dd7ea9a5616",
+      "author_date": "2024-12-31T12:55:29+09:00",
+      "subject": "8.12 Submit Product",
+      "changed_paths": [
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/mutations.ts",
+        "app/features/products/pages/submit-product-page.tsx",
+        "app/features/products/schema.ts"
+      ],
+      "technical_topics": [
+        "product submission mutation"
+      ],
+      "architecture_stage": "product write flow",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "SEC-002"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Adds server-mediated product submission and integrates it with the product layout."
+    },
+    {
+      "number": "109",
+      "hash": "600b94801b5871f3762ab748b47227f18c58fc5d",
+      "author_date": "2024-12-31T13:41:12+09:00",
+      "subject": "8.13 Upvotes",
+      "changed_paths": [
+        "app/features/community/components/post-card.tsx",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/pages/post-page.tsx",
+        "app/sql/views/community-post-detail.sql",
+        "app/sql/views/community-post-list-view.sql",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "upvote data update"
+      ],
+      "architecture_stage": "vote read-model refinement",
+      "rule_ids": [
+        "DB-001",
+        "DB-004",
+        "SUPA-003"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Updates vote views without migration or security_invoker evidence, leaving the read-model change as explicit legacy risk."
+    },
+    {
+      "number": "110",
+      "hash": "4169ccfec4a752b672d88115cad4db27c0d41180",
+      "author_date": "2025-01-02T09:45:32+09:00",
+      "subject": "9.1 fetcher Forms",
+      "changed_paths": [
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/pages/upvote-post-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "fetcher form"
+      ],
+      "architecture_stage": "non-navigation mutation UI",
+      "rule_ids": [
+        "RR7-002",
+        "UI-005"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Uses raw FormData, console logging, and a fake success response, a temporary fetcher lesson rather than a complete mutation boundary."
+    },
+    {
+      "number": "111",
+      "hash": "ccd8ec5edb517dc0e61cb5c9c110ab1dabc821f5",
+      "author_date": "2025-01-02T10:07:14+09:00",
+      "subject": "9.2 fetcher Submit",
+      "changed_paths": [
+        "app/features/community/components/post-card.tsx",
+        "app/features/community/pages/upvote-post-page.tsx"
+      ],
+      "technical_topics": [
+        "fetcher submission"
+      ],
+      "architecture_stage": "non-navigation mutation refinement",
+      "rule_ids": [
+        "RR7-002",
+        "UI-005"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Connects the post card to the raw FormData and fake-success fetcher step, which remains temporary teaching code."
+    },
+    {
+      "number": "112",
+      "hash": "a1befc3516d1bebaf2071971bef8d51485e245bf",
+      "author_date": "2025-01-02T11:00:59+09:00",
+      "subject": "9.3 Optimistic UI",
+      "changed_paths": [
+        "app/features/community/components/post-card.tsx",
+        "app/features/community/mutations.ts",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/pages/upvote-post-page.tsx"
+      ],
+      "technical_topics": [
+        "optimistic upvotes"
+      ],
+      "architecture_stage": "optimistic UI state",
+      "rule_ids": [
+        "RR7-002",
+        "RR7-006",
+        "UI-005"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds a real optimistic toggle but retains an artificial five-second delay and unvalidated route input, a temporary teaching transition."
+    },
+    {
+      "number": "113",
+      "hash": "d95eab9a70ae42b16ba135a74fb2a8a8c4d9a363",
+      "author_date": "2025-01-02T11:37:36+09:00",
+      "subject": "9.4 Notification Triggers",
+      "changed_paths": [
+        "app/features/users/schema.ts",
+        "app/sql/migrations/0014_big_khan.sql",
+        "app/sql/migrations/meta/0014_snapshot.json",
+        "app/sql/migrations/meta/_journal.json",
+        "app/sql/triggers/notification-triggers.sql"
+      ],
+      "technical_topics": [
+        "notification triggers"
+      ],
+      "architecture_stage": "database event automation",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SEC-002"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds standalone notification-trigger SQL while the migration carries schema only, leaving migration and function-security risk unresolved."
+    },
+    {
+      "number": "114",
+      "hash": "3245085cd7d7755aeef233475b25be71041e089f",
+      "author_date": "2025-01-02T12:28:48+09:00",
+      "subject": "9.5 Notifications Page",
+      "changed_paths": [
+        "app/features/users/components/notification-card.tsx",
+        "app/features/users/pages/notifications-page.tsx",
+        "app/features/users/queries.ts",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "notification reads"
+      ],
+      "architecture_stage": "notification data layer",
+      "rule_ids": [
+        "RR7-001",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "pattern-introduction",
+      "audit_note": "Connects notification route UI to typed query data."
+    },
+    {
+      "number": "115",
+      "hash": "fc502e6b262e32ab516af8041fcab5c69779905e",
+      "author_date": "2025-01-02T12:57:56+09:00",
+      "subject": "9.6 See Notifications",
+      "changed_paths": [
+        "app/features/users/components/notification-card.tsx",
+        "app/features/users/mutations.ts",
+        "app/features/users/pages/notifications-page.tsx",
+        "app/features/users/pages/see-notification-page.tsx",
+        "app/features/users/queries.ts",
+        "app/root.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "seen notification mutation"
+      ],
+      "architecture_stage": "notification write flow",
+      "rule_ids": [
+        "RR7-002",
+        "SEC-002"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Adds a dedicated action path for marking notifications read."
+    },
+    {
+      "number": "116",
+      "hash": "09e731982f319eedc61e9708f113813831aea6ce",
+      "author_date": "2025-01-03T10:16:34+09:00",
+      "subject": "10.1 Creating Rooms",
+      "changed_paths": [
+        "app/common/pages/home-page.tsx",
+        "app/features/teams/pages/team-page.tsx",
+        "app/features/teams/queries.ts",
+        "app/features/users/mutations.ts",
+        "app/features/users/pages/my-profile-page.tsx",
+        "app/features/users/pages/send-message-page.tsx",
+        "app/features/users/schema.ts",
+        "app/routes.ts",
+        "app/sql/functions/get_room.sql",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "room creation"
+      ],
+      "architecture_stage": "messaging write model",
+      "rule_ids": [
+        "RR7-002",
+        "DB-001",
+        "DB-003",
+        "DB-005"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Performs room, member, and message writes separately and relies on standalone unqualified function SQL, an atomicity and database-security legacy risk."
+    },
+    {
+      "number": "117",
+      "hash": "7d732d73688877eb834f1fd321d015dda0080974",
+      "author_date": "2025-01-03T10:53:03+09:00",
+      "subject": "10.2 Fetching Rooms",
+      "changed_paths": [
+        "app/features/users/layouts/messages-layout.tsx",
+        "app/features/users/queries.ts",
+        "app/sql/views/messages-view.sql",
+        "app/supa-client.ts",
+        "database.types.ts"
+      ],
+      "technical_topics": [
+        "room list view"
+      ],
+      "architecture_stage": "messaging read model",
+      "rule_ids": [
+        "DB-001",
+        "DB-004",
+        "SUPA-003",
+        "SUPA-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds a standalone messages view with unresolved SQL syntax and no security_invoker evidence, so its typed read is legacy-risk context."
+    },
+    {
+      "number": "118",
+      "hash": "73566ff6a5728165c42890b189716954f6b04037",
+      "author_date": "2025-01-03T11:15:41+09:00",
+      "subject": "10.3 Fetching Messages",
+      "changed_paths": [
+        "app/features/users/layouts/messages-layout.tsx",
+        "app/features/users/pages/message-page.tsx",
+        "app/features/users/queries.ts",
+        "app/root.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "message reads"
+      ],
+      "architecture_stage": "messaging detail data",
+      "rule_ids": [
+        "RR7-001",
+        "SUPA-003"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Loads room messages through the message route and existing query layer."
+    },
+    {
+      "number": "119",
+      "hash": "70224a3e386ef06b28a0fc28d2490b64fa2cb708",
+      "author_date": "2025-01-03T11:39:03+09:00",
+      "subject": "10.4 Sending Message",
+      "changed_paths": [
+        "app/features/users/pages/message-page.tsx",
+        "app/features/users/queries.ts"
+      ],
+      "technical_topics": [
+        "message send"
+      ],
+      "architecture_stage": "multiparty mutation",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Casts raw formData values directly into the database write without Zod parsing, a legacy trust-boundary risk."
+    },
+    {
+      "number": "120",
+      "hash": "b568063272e4032a0529b3c2c9c2cd1079f145de",
+      "author_date": "2025-01-03T12:28:15+09:00",
+      "subject": "10.5 Realtime Messages",
+      "changed_paths": [
+        "app/features/users/layouts/messages-layout.tsx",
+        "app/features/users/pages/message-page.tsx",
+        "app/features/users/queries.ts"
+      ],
+      "technical_topics": [
+        "Realtime messages"
+      ],
+      "architecture_stage": "subscription lifecycle",
+      "rule_ids": [
+        "SUPA-005",
+        "UI-005",
+        "TS-002",
+        "RR7-006"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Copies loader data into local state and subscribes globally to unfiltered messages with captured empty dependencies, raw casts, and shouldRevalidate false, a legacy realtime risk despite cleanup."
+    },
+    {
+      "number": "121",
+      "hash": "3e23c51baff7b984c48d2c665cedbcc6e79fd88f",
+      "author_date": "2025-01-03T13:59:12+09:00",
+      "subject": "10.8 Function Search Path",
+      "changed_paths": [
+        "app/sql/functions/get_room.sql"
+      ],
+      "technical_topics": [
+        "function search path"
+      ],
+      "architecture_stage": "database function security",
+      "rule_ids": [
+        "DB-001",
+        "DB-003"
+      ],
+      "classification": "correction",
+      "audit_note": "Qualifies relation names so the empty search_path posture works, but migration tracking and privilege handling remain incomplete legacy limitations."
+    },
+    {
+      "number": "122",
+      "hash": "a0d678874d1de875a6a89456c2b4221522a81ee6",
+      "author_date": "2025-01-06T09:52:16+09:00",
+      "subject": "11.1 OpenAI API",
+      "changed_paths": [
+        "app/features/ideas/mutations.ts",
+        "app/features/ideas/pages/generate-idea-page.tsx",
+        "app/routes.ts",
+        "app/supa-client.ts",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "OpenAI integration"
+      ],
+      "architecture_stage": "external API mutation",
+      "rule_ids": [
+        "RR7-002",
+        "SEC-001",
+        "SEC-003"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Invokes OpenAI from a loader GET effect, writes through an admin client, and imports a shared service-role client without action, consent, auth, or audit controls, a legacy remote-effect risk."
+    },
+    {
+      "number": "123",
+      "hash": "3b7ca08dc049fdd51af30074129e4d6f67c82382",
+      "author_date": "2025-01-06T10:16:14+09:00",
+      "subject": "11.2 CRON Jobs",
+      "changed_paths": [
+        "app/features/ideas/pages/generate-idea-page.tsx"
+      ],
+      "technical_topics": [
+        "scheduled ideas job"
+      ],
+      "architecture_stage": "automation teaching step",
+      "rule_ids": [
+        "SEC-003",
+        "RR7-004"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Adds a cron-oriented UI transition without a visible authorization or audit boundary, a legacy risk rather than current automation guidance."
+    },
+    {
+      "number": "124",
+      "hash": "89b0e72b762d8be38a14d6764b83f5a26c44d381",
+      "author_date": "2025-01-07T09:50:41+09:00",
+      "subject": "12.4 React Email",
+      "changed_paths": [
+        "app/features/users/pages/welcome-page.tsx",
+        "app/routes.ts",
+        "package-lock.json",
+        "package.json",
+        "react-email-starter/emails/notion-magic-link.tsx",
+        "react-email-starter/emails/plaid-verify-identity.tsx",
+        "react-email-starter/emails/static/notion-logo.png",
+        "react-email-starter/emails/static/plaid-logo.png",
+        "react-email-starter/emails/static/plaid.png",
+        "react-email-starter/emails/static/stripe-logo.png",
+        "react-email-starter/emails/static/vercel-arrow.png",
+        "react-email-starter/emails/static/vercel-logo.png",
+        "react-email-starter/emails/static/vercel-team.png",
+        "react-email-starter/emails/static/vercel-user.png",
+        "react-email-starter/emails/stripe-welcome.tsx",
+        "react-email-starter/emails/vercel-invite-user.tsx",
+        "react-email-starter/emails/welcome-user.tsx",
+        "react-email-starter/package.json",
+        "react-email-starter/readme.md"
+      ],
+      "technical_topics": [
+        "email templates"
+      ],
+      "architecture_stage": "external email presentation",
+      "rule_ids": [
+        "SEC-003",
+        "UI-002"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Adds email assets and a welcome route before a complete consent and delivery boundary is evidenced, so it remains incomplete."
+    },
+    {
+      "number": "125",
+      "hash": "f140e599c7387d3ca983281c04d1d2d16455eaf1",
+      "author_date": "2025-01-08T09:54:37+09:00",
+      "subject": "13.0 Introduction",
+      "changed_paths": [
+        "app/features/products/pages/promote-page.tsx"
+      ],
+      "technical_topics": [
+        "promotion introduction"
+      ],
+      "architecture_stage": "payment teaching setup",
+      "rule_ids": [
+        "SEC-003"
+      ],
+      "classification": "teaching-transition",
+      "audit_note": "Starts the payment lesson with presentation changes only, a temporary setup rather than an executable payment architecture."
+    },
+    {
+      "number": "126",
+      "hash": "6fd0938a9e3ad60f60adfcb9ec08d4352b930e78",
+      "author_date": "2025-01-08T11:15:43+09:00",
+      "subject": "13.2 Request Payment",
+      "changed_paths": [
+        "app/features/products/pages/promote-page.tsx",
+        "package-lock.json",
+        "package.json"
+      ],
+      "technical_topics": [
+        "payment request"
+      ],
+      "architecture_stage": "payment initiation flow",
+      "rule_ids": [
+        "SEC-003"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Sets up payment as a client-side effect without a route action, leaving consent and server authority as a legacy risk."
+    },
+    {
+      "number": "127",
+      "hash": "287411fe3fe9ba96ba398ef4f644d5f0534233e0",
+      "author_date": "2025-01-08T11:35:46+09:00",
+      "subject": "13.3 Confirm Payment",
+      "changed_paths": [
+        "app/features/products/pages/promote-page.tsx",
+        "app/features/products/pages/promote-success-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "payment confirmation"
+      ],
+      "architecture_stage": "payment confirmation flow",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "SEC-001",
+        "SEC-003"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Uses a side-effecting loader, trusts payment query parameters, and embeds TOSS_SECRET_KEY, making this branch variant an insecure legacy payment path."
+    },
+    {
+      "number": "128",
+      "hash": "ae7a5dfdb2a88b3d88994dc570e6831ee617b3ac",
+      "author_date": "2025-01-08T11:35:46+09:00",
+      "subject": "13.3 Confirm Payment",
+      "changed_paths": [
+        "app/features/products/pages/promote-page.tsx",
+        "app/features/products/pages/promote-success-page.tsx",
+        "app/routes.ts"
+      ],
+      "technical_topics": [
+        "payment confirmation correction"
+      ],
+      "architecture_stage": "payment route correction",
+      "rule_ids": [
+        "RR7-002",
+        "ZOD-001",
+        "SEC-001",
+        "SEC-003"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Is an alternate sibling payment-confirmation variant that still uses a side-effecting loader, trusted query data, and embedded secret, a legacy risk rather than a correction chain."
+    },
+    {
+      "number": "129",
+      "hash": "d13c78798176354cea7a00ec69a145b5c15417dc",
+      "author_date": "2025-01-31T23:45:41+01:00",
+      "subject": "Sexify",
+      "changed_paths": [
+        ".gitignore",
+        "app/common/components/hero.tsx",
+        "app/common/components/input-pair.tsx",
+        "app/common/components/navigation.tsx",
+        "app/common/components/ui/accordion.tsx",
+        "app/common/components/ui/blur-fade.tsx",
+        "app/common/components/ui/chart.tsx",
+        "app/common/components/ui/drawer.tsx",
+        "app/common/components/ui/magic-card.tsx",
+        "app/common/components/ui/marquee.tsx",
+        "app/common/components/ui/neon-gradient-card.tsx",
+        "app/common/components/ui/pagination.tsx",
+        "app/common/components/ui/retro-grid.tsx",
+        "app/common/components/ui/ripple.tsx",
+        "app/common/components/ui/scroll-based-velocity.tsx",
+        "app/common/components/ui/sheet.tsx",
+        "app/common/components/ui/sidebar.tsx",
+        "app/common/pages/home-page.tsx",
+        "app/entry.server.tsx",
+        "app/features/auth/components/auth-buttons.tsx",
+        "app/features/auth/layouts/auth-layout.tsx",
+        "app/features/auth/pages/join-page.tsx",
+        "app/features/auth/pages/login-page.tsx",
+        "app/features/auth/pages/logout-page.tsx",
+        "app/features/auth/pages/otp-complete-page.tsx",
+        "app/features/auth/pages/otp-start-page.tsx",
+        "app/features/auth/pages/social-complete-page.tsx",
+        "app/features/auth/pages/social-start-page.tsx",
+        "app/features/community/components/post-card.tsx",
+        "app/features/community/components/reply.tsx",
+        "app/features/community/mutations.ts",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/pages/upvote-post-page.tsx",
+        "app/features/community/queries.ts",
+        "app/features/community/schema.ts",
+        "app/features/ideas/components/idea-card.tsx",
+        "app/features/ideas/components/like-button.tsx",
+        "app/features/ideas/mutations.ts",
+        "app/features/ideas/pages/claim-idea-fail.tsx",
+        "app/features/ideas/pages/claim-idea-success.tsx",
+        "app/features/ideas/pages/generate-idea-page.tsx",
+        "app/features/ideas/pages/idea-page.tsx",
+        "app/features/ideas/pages/ideas-page.tsx",
+        "app/features/ideas/pages/like-idea-page.tsx",
+        "app/features/ideas/queries.ts",
+        "app/features/jobs/components/job-card.tsx",
+        "app/features/jobs/mutations.ts",
+        "app/features/jobs/pages/job-page.tsx",
+        "app/features/jobs/pages/jobs-page.tsx",
+        "app/features/jobs/pages/submit-job-fail.tsx",
+        "app/features/jobs/pages/submit-job-page.tsx",
+        "app/features/jobs/pages/submit-job-success.tsx",
+        "app/features/jobs/queries.ts",
+        "app/features/products/components/create-review-dialog.tsx",
+        "app/features/products/components/product-card.tsx",
+        "app/features/products/components/review-card.tsx",
+        "app/features/products/contants.ts",
+        "app/features/products/layouts/leaderboard-layout.tsx",
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/mutations.ts",
+        "app/features/products/pages/categories-page.tsx",
+        "app/features/products/pages/category-page.tsx",
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "app/features/products/pages/leaderboard-page.tsx",
+        "app/features/products/pages/leaderboards-redirection-page.tsx",
+        "app/features/products/pages/monthly-leaderboard-page.tsx",
+        "app/features/products/pages/product-overview-page.tsx",
+        "app/features/products/pages/product-redirect-page.tsx",
+        "app/features/products/pages/product-reviews-page.tsx",
+        "app/features/products/pages/product-upvote-page.tsx",
+        "app/features/products/pages/product-visit-page.tsx",
+        "app/features/products/pages/promote-fail-page.tsx",
+        "app/features/products/pages/promote-page.tsx",
+        "app/features/products/pages/promote-success-page.tsx",
+        "app/features/products/pages/search-page.tsx",
+        "app/features/products/pages/submit-product-page.tsx",
+        "app/features/products/pages/weekly-leaderboard-page.tsx",
+        "app/features/products/pages/yearly-leaderboard-page.tsx",
+        "app/features/products/queries.ts",
+        "app/features/products/schema.ts",
+        "app/features/teams/components/team-card.tsx",
+        "app/features/teams/mutations.ts",
+        "app/features/teams/pages/submit-team-page.tsx",
+        "app/features/teams/pages/team-page.tsx",
+        "app/features/teams/pages/teams-page.tsx",
+        "app/features/teams/queries.ts",
+        "app/features/users/components/follow-button.tsx",
+        "app/features/users/components/message-bubble.tsx",
+        "app/features/users/components/message-room-card.tsx",
+        "app/features/users/components/notification-card.tsx",
+        "app/features/users/layouts/dashboard-layout.tsx",
+        "app/features/users/layouts/messages-layout.tsx",
+        "app/features/users/layouts/profile-layout.tsx",
+        "app/features/users/mutations.ts",
+        "app/features/users/pages/dashboard-ideas-page.tsx",
+        "app/features/users/pages/dashboard-page.tsx",
+        "app/features/users/pages/dashboard-product-page.tsx",
+        "app/features/users/pages/follow-page.tsx",
+        "app/features/users/pages/message-page.tsx",
+        "app/features/users/pages/messages-page.tsx",
+        "app/features/users/pages/my-profile-page.tsx",
+        "app/features/users/pages/notifications-page.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/features/users/pages/profile-posts-page.tsx",
+        "app/features/users/pages/profile-products-page.tsx",
+        "app/features/users/pages/see-notification-page.tsx",
+        "app/features/users/pages/send-message-page.tsx",
+        "app/features/users/pages/settings-page.tsx",
+        "app/features/users/pages/welcome-page.tsx",
+        "app/features/users/queries.ts",
+        "app/features/users/schema.ts",
+        "app/root.tsx",
+        "app/routes.ts",
+        "app/sql/functions/track_idea_view.sql",
+        "app/sql/migrations/0015_tricky_jimmy_woo.sql",
+        "app/sql/migrations/0016_white_maginty.sql",
+        "app/sql/migrations/0017_lowly_nick_fury.sql",
+        "app/sql/migrations/0018_long_boomer.sql",
+        "app/sql/migrations/0019_equal_synch.sql",
+        "app/sql/migrations/0020_sturdy_darkstar.sql",
+        "app/sql/migrations/0021_puzzling_sway.sql",
+        "app/sql/migrations/0022_youthful_blade.sql",
+        "app/sql/migrations/meta/0015_snapshot.json",
+        "app/sql/migrations/meta/0016_snapshot.json",
+        "app/sql/migrations/meta/0017_snapshot.json",
+        "app/sql/migrations/meta/0018_snapshot.json",
+        "app/sql/migrations/meta/0019_snapshot.json",
+        "app/sql/migrations/meta/0020_snapshot.json",
+        "app/sql/migrations/meta/0021_snapshot.json",
+        "app/sql/migrations/meta/0022_snapshot.json",
+        "app/sql/migrations/meta/_journal.json",
+        "app/sql/seed.sql",
+        "app/sql/triggers/follow-trigger.sql",
+        "app/sql/triggers/product-upvote-trigger.sql",
+        "app/sql/triggers/review-trigger.sql",
+        "app/sql/views/gpt_ideas_view.sql",
+        "app/sql/views/product-list-view.sql",
+        "app/sql/views/profiles-view.sql",
+        "app/supa-client.ts",
+        "components.json",
+        "database.types.ts",
+        "package-lock.json",
+        "package.json",
+        "react-email-starter/emails/welcome-user.tsx",
+        "tailwind.config.ts",
+        "tsconfig.cloudflare.json",
+        "tsconfig.json",
+        "tsconfig.node.json",
+        "vite.config.ts",
+        "worker-configuration.d.ts",
+        "workers/app.ts",
+        "wrangler.toml"
+      ],
+      "technical_topics": [
+        "broad repository integration"
+      ],
+      "architecture_stage": "cross-cutting integration risk",
+      "rule_ids": [
+        "ARCH-004",
+        "DB-001",
+        "DB-003",
+        "DB-004",
+        "DB-005"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Merges a broad Sexify integration spanning worker infrastructure, migrations, functions, triggers, views, seed data, and UI, a legacy risk too broad to treat as polish."
+    },
+    {
+      "number": "130",
+      "hash": "4cbba8b6d4b19fb808a9b2f10cc75a0b5d127dcb",
+      "author_date": "2025-01-31T23:47:24+01:00",
+      "subject": "Merge branch 'master' of https://github.com/nomadcoders/wemake",
+      "changed_paths": [
+        ".gitignore",
+        "app/common/components/hero.tsx",
+        "app/common/components/input-pair.tsx",
+        "app/common/components/navigation.tsx",
+        "app/common/components/ui/accordion.tsx",
+        "app/common/components/ui/blur-fade.tsx",
+        "app/common/components/ui/chart.tsx",
+        "app/common/components/ui/drawer.tsx",
+        "app/common/components/ui/magic-card.tsx",
+        "app/common/components/ui/marquee.tsx",
+        "app/common/components/ui/neon-gradient-card.tsx",
+        "app/common/components/ui/pagination.tsx",
+        "app/common/components/ui/retro-grid.tsx",
+        "app/common/components/ui/ripple.tsx",
+        "app/common/components/ui/scroll-based-velocity.tsx",
+        "app/common/components/ui/sheet.tsx",
+        "app/common/components/ui/sidebar.tsx",
+        "app/common/pages/home-page.tsx",
+        "app/entry.server.tsx",
+        "app/features/auth/components/auth-buttons.tsx",
+        "app/features/auth/layouts/auth-layout.tsx",
+        "app/features/auth/pages/join-page.tsx",
+        "app/features/auth/pages/login-page.tsx",
+        "app/features/auth/pages/logout-page.tsx",
+        "app/features/auth/pages/otp-complete-page.tsx",
+        "app/features/auth/pages/otp-start-page.tsx",
+        "app/features/auth/pages/social-complete-page.tsx",
+        "app/features/auth/pages/social-start-page.tsx",
+        "app/features/community/components/post-card.tsx",
+        "app/features/community/components/reply.tsx",
+        "app/features/community/mutations.ts",
+        "app/features/community/pages/community-page.tsx",
+        "app/features/community/pages/post-page.tsx",
+        "app/features/community/pages/upvote-post-page.tsx",
+        "app/features/community/queries.ts",
+        "app/features/community/schema.ts",
+        "app/features/ideas/components/idea-card.tsx",
+        "app/features/ideas/components/like-button.tsx",
+        "app/features/ideas/mutations.ts",
+        "app/features/ideas/pages/claim-idea-fail.tsx",
+        "app/features/ideas/pages/claim-idea-success.tsx",
+        "app/features/ideas/pages/generate-idea-page.tsx",
+        "app/features/ideas/pages/idea-page.tsx",
+        "app/features/ideas/pages/ideas-page.tsx",
+        "app/features/ideas/pages/like-idea-page.tsx",
+        "app/features/ideas/queries.ts",
+        "app/features/jobs/components/job-card.tsx",
+        "app/features/jobs/mutations.ts",
+        "app/features/jobs/pages/job-page.tsx",
+        "app/features/jobs/pages/jobs-page.tsx",
+        "app/features/jobs/pages/submit-job-fail.tsx",
+        "app/features/jobs/pages/submit-job-page.tsx",
+        "app/features/jobs/pages/submit-job-success.tsx",
+        "app/features/jobs/queries.ts",
+        "app/features/products/components/create-review-dialog.tsx",
+        "app/features/products/components/product-card.tsx",
+        "app/features/products/components/review-card.tsx",
+        "app/features/products/contants.ts",
+        "app/features/products/layouts/leaderboard-layout.tsx",
+        "app/features/products/layouts/product-overview-layout.tsx",
+        "app/features/products/mutations.ts",
+        "app/features/products/pages/categories-page.tsx",
+        "app/features/products/pages/category-page.tsx",
+        "app/features/products/pages/daily-leaderboard-page.tsx",
+        "app/features/products/pages/leaderboard-page.tsx",
+        "app/features/products/pages/leaderboards-redirection-page.tsx",
+        "app/features/products/pages/monthly-leaderboard-page.tsx",
+        "app/features/products/pages/product-overview-page.tsx",
+        "app/features/products/pages/product-redirect-page.tsx",
+        "app/features/products/pages/product-reviews-page.tsx",
+        "app/features/products/pages/product-upvote-page.tsx",
+        "app/features/products/pages/product-visit-page.tsx",
+        "app/features/products/pages/promote-fail-page.tsx",
+        "app/features/products/pages/promote-page.tsx",
+        "app/features/products/pages/promote-success-page.tsx",
+        "app/features/products/pages/search-page.tsx",
+        "app/features/products/pages/submit-product-page.tsx",
+        "app/features/products/pages/weekly-leaderboard-page.tsx",
+        "app/features/products/pages/yearly-leaderboard-page.tsx",
+        "app/features/products/queries.ts",
+        "app/features/products/schema.ts",
+        "app/features/teams/components/team-card.tsx",
+        "app/features/teams/mutations.ts",
+        "app/features/teams/pages/submit-team-page.tsx",
+        "app/features/teams/pages/team-page.tsx",
+        "app/features/teams/pages/teams-page.tsx",
+        "app/features/teams/queries.ts",
+        "app/features/users/components/follow-button.tsx",
+        "app/features/users/components/message-bubble.tsx",
+        "app/features/users/components/message-room-card.tsx",
+        "app/features/users/components/notification-card.tsx",
+        "app/features/users/layouts/dashboard-layout.tsx",
+        "app/features/users/layouts/messages-layout.tsx",
+        "app/features/users/layouts/profile-layout.tsx",
+        "app/features/users/mutations.ts",
+        "app/features/users/pages/dashboard-ideas-page.tsx",
+        "app/features/users/pages/dashboard-page.tsx",
+        "app/features/users/pages/dashboard-product-page.tsx",
+        "app/features/users/pages/follow-page.tsx",
+        "app/features/users/pages/message-page.tsx",
+        "app/features/users/pages/messages-page.tsx",
+        "app/features/users/pages/my-profile-page.tsx",
+        "app/features/users/pages/notifications-page.tsx",
+        "app/features/users/pages/profile-page.tsx",
+        "app/features/users/pages/profile-posts-page.tsx",
+        "app/features/users/pages/profile-products-page.tsx",
+        "app/features/users/pages/see-notification-page.tsx",
+        "app/features/users/pages/send-message-page.tsx",
+        "app/features/users/pages/settings-page.tsx",
+        "app/features/users/pages/welcome-page.tsx",
+        "app/features/users/queries.ts",
+        "app/features/users/schema.ts",
+        "app/root.tsx",
+        "app/routes.ts",
+        "app/sql/functions/track_idea_view.sql",
+        "app/sql/migrations/0015_tricky_jimmy_woo.sql",
+        "app/sql/migrations/0016_white_maginty.sql",
+        "app/sql/migrations/0017_lowly_nick_fury.sql",
+        "app/sql/migrations/0018_long_boomer.sql",
+        "app/sql/migrations/0019_equal_synch.sql",
+        "app/sql/migrations/0020_sturdy_darkstar.sql",
+        "app/sql/migrations/0021_puzzling_sway.sql",
+        "app/sql/migrations/0022_youthful_blade.sql",
+        "app/sql/migrations/0023_third_tony_stark.sql",
+        "app/sql/migrations/0024_overjoyed_boomer.sql",
+        "app/sql/migrations/0025_aspiring_sunfire.sql",
+        "app/sql/migrations/0026_parallel_puma.sql",
+        "app/sql/migrations/0027_noisy_tarot.sql",
+        "app/sql/migrations/0028_nappy_silk_fever.sql",
+        "app/sql/migrations/meta/0015_snapshot.json",
+        "app/sql/migrations/meta/0016_snapshot.json",
+        "app/sql/migrations/meta/0017_snapshot.json",
+        "app/sql/migrations/meta/0018_snapshot.json",
+        "app/sql/migrations/meta/0019_snapshot.json",
+        "app/sql/migrations/meta/0020_snapshot.json",
+        "app/sql/migrations/meta/0021_snapshot.json",
+        "app/sql/migrations/meta/0022_snapshot.json",
+        "app/sql/migrations/meta/0023_snapshot.json",
+        "app/sql/migrations/meta/0024_snapshot.json",
+        "app/sql/migrations/meta/0025_snapshot.json",
+        "app/sql/migrations/meta/0026_snapshot.json",
+        "app/sql/migrations/meta/0027_snapshot.json",
+        "app/sql/migrations/meta/0028_snapshot.json",
+        "app/sql/migrations/meta/_journal.json",
+        "app/sql/seed.sql",
+        "app/sql/triggers/follow-trigger.sql",
+        "app/sql/triggers/product-upvote-trigger.sql",
+        "app/sql/triggers/review-trigger.sql",
+        "app/sql/views/gpt_ideas_view.sql",
+        "app/sql/views/product-list-view.sql",
+        "app/sql/views/profiles-view.sql",
+        "app/supa-client.ts",
+        "components.json",
+        "database.types.ts",
+        "package-lock.json",
+        "package.json",
+        "react-email-starter/emails/welcome-user.tsx",
+        "tailwind.config.ts",
+        "tsconfig.cloudflare.json",
+        "tsconfig.json",
+        "tsconfig.node.json",
+        "vite.config.ts",
+        "worker-configuration.d.ts",
+        "workers/app.ts",
+        "wrangler.toml"
+      ],
+      "technical_topics": [
+        "master merge"
+      ],
+      "architecture_stage": "integration merge",
+      "rule_ids": [
+        "ARCH-004",
+        "DB-001"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Integrates divergent history; merge-result paths are indexed, but the combined snapshot is legacy context rather than a single recommended pattern."
+    },
+    {
+      "number": "131",
+      "hash": "2d06424501bbe9686bff6fe796e8353ff0357a91",
+      "author_date": "2025-02-05T20:56:14+01:00",
+      "subject": "no plus",
+      "changed_paths": [
+        "app/features/jobs/constants.ts",
+        "app/features/teams/pages/team-page.tsx",
+        "app/features/teams/pages/teams-page.tsx",
+        "app/features/teams/queries.ts",
+        "app/sql/migrations/0029_glamorous_chamber.sql",
+        "app/sql/migrations/meta/0029_snapshot.json",
+        "app/sql/migrations/meta/_journal.json"
+      ],
+      "technical_topics": [
+        "team migration",
+        "query"
+      ],
+      "architecture_stage": "team feature refinement",
+      "rule_ids": [
+        "DB-001",
+        "SUPA-003"
+      ],
+      "classification": "pattern-refinement",
+      "audit_note": "Adds a team schema revision and aligns the related list and detail queries."
+    },
+    {
+      "number": "132",
+      "hash": "6d58ab9afa611d77f1b5add657dfc370fb674529",
+      "author_date": "2025-02-06T09:49:43+01:00",
+      "subject": "messages",
+      "changed_paths": [
+        "app/features/users/pages/message-page.tsx"
+      ],
+      "technical_topics": [
+        "message page fix"
+      ],
+      "architecture_stage": "messaging behavior correction",
+      "rule_ids": [
+        "RR7-006",
+        "UI-005"
+      ],
+      "classification": "correction",
+      "audit_note": "Corrects message-page behavior after the merged messaging changes."
+    },
+    {
+      "number": "133",
+      "hash": "c24587b2f8b30b27340c0f721ae2f4cf7270a495",
+      "author_date": "2025-02-06T09:49:43+01:00",
+      "subject": "messages",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/features/users/pages/message-page.tsx",
+        "app/sql/triggers/new-message-trigger.sql"
+      ],
+      "technical_topics": [
+        "recursive message trigger"
+      ],
+      "architecture_stage": "database trigger legacy risk",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "SEC-002"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Introduces a recursive message trigger with a hard-coded UUID, leaving an unmigrated function-security legacy risk."
+    },
+    {
+      "number": "134",
+      "hash": "088286184a579c8c8c6df9f0d31cada1e08d6d7b",
+      "author_date": "2025-02-06T10:32:02+01:00",
+      "subject": "Merge branch 'master' of https://github.com/nomadcoders/wemake",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/features/users/pages/message-page.tsx",
+        "app/sql/triggers/new-message-trigger.sql"
+      ],
+      "technical_topics": [
+        "master merge integration"
+      ],
+      "architecture_stage": "integration merge",
+      "rule_ids": [
+        "ARCH-004",
+        "DB-001"
+      ],
+      "classification": "legacy-risk",
+      "audit_note": "Records a no-content merge checkpoint whose parent comparison is historical context, not a current application recommendation."
+    },
+    {
+      "number": "135",
+      "hash": "21ceb5d55c608772ed374a651eaf1639eaec6d5c",
+      "author_date": "2025-02-19T21:27:31+01:00",
+      "subject": "hamburger",
+      "changed_paths": [
+        "app/common/components/navigation.tsx",
+        "app/root.tsx",
+        "app/sql/triggers/new-message-trigger.sql"
+      ],
+      "technical_topics": [
+        "message trigger recursion guard and navigation"
+      ],
+      "architecture_stage": "partial messaging trigger correction",
+      "rule_ids": [
+        "DB-001",
+        "DB-003",
+        "UI-005"
+      ],
+      "classification": "correction",
+      "audit_note": "Adds a recursion guard and changes shouldRevalidate and navigation, correcting the trigger while unmigrated hard-coded and broad-revalidation risks remain."
+    }
+  ]
+}

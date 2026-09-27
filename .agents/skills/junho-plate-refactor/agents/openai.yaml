@@ -1,0 +1,6 @@
+interface:
+  display_name: "Junho Plate Refactor"
+  short_description: "Refactor one authorized RR7 feature slice"
+  default_prompt: "Use $junho-plate-refactor to repair one React Router 7 feature slice now, preserving behavior and avoiding redundant plan approval regardless of Plate provenance."
+policy:
+  allow_implicit_invocation: false
